@@ -1,0 +1,40 @@
+/*
+ * Typographies Configurations
+ */
+$font-georgia				: Georgia, Cambria, 'Times New Roman', Times, serif !default;
+$font-helvetica 			: 'Helvetica Neue', Helvetica, Arial, sans-serif !default;
+$font-impact 				: Impact, Charcoal, sans-serif !default;
+$font-lato 					: 'Lato', sans-serif !default;
+$font-lucinda-grande 		: 'Lucida Grande', Tahoma, Verdana, Arial, sans-serif !default;
+$font-monospace 			: Menlo, 'Bitstream Vera Sans Mono', 'DejaVu Sans Mono', Monaco, Consolas, monospace !default;
+$font-open-sans 			: 'Open Sans', Helvetica, Arial, sans-serif !default;
+$font-roboto 				: 'Roboto', 'Helvetic Neue', Helvetica, Arial !default;
+$font-tahoma 				: Tahoma, Geneva, sans-serif !default;
+$font-times-new-roman 		: 'Times New Roman', Times, serif !default;
+$font-trebuchet 			: 'Trebuchet MS', Helvetica, sans-serif !default;
+$font-verdana				: Verdana, Geneva, sans-serif !default;
+$font-roboto  				: 'Roboto', Arial, Helvetica, sans-serif !default;
+$font-roboto-condensed  	: 'Roboto Condensed', Arial, Helvetica, sans-serif !default;
+$font-roboto-slab       	: 'Roboto Slab', Arial, Helvetica, sans-serif !default;
+
+$default-font-family 		: $font-open-sans !default;
+$default-font-weight 		: normal !default;
+$default-font-size 			: 1em !default;
+$default-font-color 		: $color-grey-65 !default;
+$default-line-height 		: 1.45 !default;
+$default-text-align 		: left !default;
+$default-text-decoration	: none !default;
+$default-text-transform		: normal !default;
+
+$vertical-rhythm-unit 		: ( $default-line-height * 90 ) !default;
+
+$h1-font-size 				: 2.2em !default;
+$h2-font-size 				: 1.75em !default;
+$h3-font-size 				: 1.50em !default;
+$h4-font-size 				: 1.25em !default;
+$h5-font-size 				: 1.1em !default;
+$h6-font-size 				: 1em !default;
+
+$p-font-size 				: 1em !default;
+
+$indent-amount 				: 25px !default;

@@ -1,0 +1,9 @@
+/*
+ * Color
+ *
+ * Usage:
+ * @include color( $color );
+ */
+@mixin color ( $color ) {
+	color: $color;
+}

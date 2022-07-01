@@ -1,0 +1,28 @@
+@mixin form-input ( ) {
+    input {
+        @include font-family( $default-form-font-family );
+        @include font-weight( $default-form-font-weight );
+        @include font-size( $default-form-font-size );
+        @include padding( $default-form-padding );
+        @include margin-no( );
+        @include background-color( $default-form-background-color );
+        @include border( $default-form-border-color, $default-form-border-size );
+        @include border-radius( $default-form-border-radius );
+        @include overlay( 1 );
+        @include text-vertical-align-middle( );
+        outline: none;
+        resize: none;
+        -webkit-appearance: none;
+
+        &:focus {
+            @include border( $default-form-border-focus-color );
+            @include overlay( 2 );
+        }
+
+        &:disabled {
+            background: $default-form-background-disable-color;
+            cursor: not-allowed;
+        }
+    }
+}
+

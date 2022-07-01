@@ -1,0 +1,10 @@
+/*
+ * IOS Render
+ *
+ * Usage:
+ * @include ios-reder ( );
+ */
+@mixin ios-render ( ) {
+	-webkit-perspective: 1000;
+	-webkit-backface-visibility: hidden;
+}

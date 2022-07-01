@@ -1,0 +1,22 @@
+.nix-panel {
+
+}
+
+	.nix-panel .panel-header {
+		border: 1px solid #dddddd;
+		padding: 10px;
+	}
+
+		.nix-panel .panel-header .panel-title {
+			margin: 0;
+		}
+
+	.nix-panel .panel-body {
+		border: 1px solid #dddddd;
+		border-top: 0;
+	}
+
+	.nix-panel .panel-footer {
+		border: 1px solid #dddddd;
+		border-top: 0;
+	}

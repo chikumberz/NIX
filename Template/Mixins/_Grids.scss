@@ -1,0 +1,851 @@
+/*
+ * Generates Grid Container
+ */
+@mixin generate-grid-container ( $class-name, $gutter-width ) {
+
+	@if $gutter-width == false {
+		.#{$class-name} {
+			@include padding( 0 #{$gutter-width} );
+		}
+	}
+
+}
+
+/*
+ * Generate Grid Columns
+ */
+@mixin generate-grid-columns ( $class-name, $column-step-size : $default-grid-column-step-size ) {
+
+	$i: $default-grid-column-step-size;
+
+	[class*='#{$class-name}-'] {
+		@include float-left( );
+		@include clear-none( );
+	}
+
+	.#{$grid-column-group-class-name} > [class*='#{$class-name}-'] {
+		@include float-left( );
+	}
+
+	@while $i <= 100 {
+
+		// Generate 33% Step Width
+		@if $i > 30 and $i <= 35 {
+			.#{$class-name}-33 {
+				@include width( 33.33% );
+			}
+		}
+
+		// Generate 66% Step Width
+		@if $i > 65 and $i <= 70 {
+			.#{$class-name}-66 {
+				@include width( 66.66% );
+			}
+		}
+
+
+		// Generate 16% Step Width
+		@if $i > 15 and $i <= 20 {
+			.#{$class-name}-16 {
+				@include width( 16.66% );
+			}
+		}
+
+		// Generate 5% Step Width
+		.#{$class-name}-#{$i} {
+			@include width( $i * 1% );
+		}
+
+		@if $i == 100 {
+			[class*='#{$class-name}-#{$i}'] {
+				@include float-clear( );
+			}
+		}
+
+		$i: $i + $column-step-size;
+	}
+
+}
+
+/*
+ * Generate Flex Grid Columns
+ */
+@mixin generate-flex-grid-columns ( $class-name, $column-step-size : $default-grid-column-step-size ) {
+
+	$i: $default-grid-column-step-size;
+
+	@while $i <= 100 {
+
+		// Generate 33% Step Width
+		@if $i > 30 and $i <= 35 {
+			.#{$class-name}-33 {
+				@include width( 33.33% );
+				@include experimental( flex-grow, 0, not -moz, -webkit, not -o, -ms, not -khtml, official );
+			}
+		}
+
+		// Generate 66% Step Width
+		@if $i > 65 and $i <= 70 {
+			.#{$class-name}-66 {
+				@include width( 66.66% );
+				@include experimental( flex-grow, 0, not -moz, -webkit, not -o, -ms, not -khtml, official );
+			}
+		}
+
+
+		// Generate 16% Step Width
+		@if $i > 15 and $i <= 20 {
+			.#{$class-name}-16 {
+				@include width( 16.66% );
+				@include experimental( flex-grow, 0, not -moz, -webkit, not -o, -ms, not -khtml, official );
+			}
+		}
+
+		// Generate 5% Step Width
+		.#{$class-name}-#{$i} {
+			@include width( $i * 1% );
+			@include experimental( flex-grow, 0, not -moz, -webkit, not -o, -ms, not -khtml, official );
+		}
+
+		$i: $i + $column-step-size;
+	}
+
+	.#{$class-name}-auto {
+        -webkit-box-flex: 1;
+        -webkit-flex: 1;
+        -moz-box-flex: 1;
+        -ms-flex: 1;
+        flex: 1;
+    }
+
+}
+
+/*
+ * Generate Grid Columns Groups
+ */
+@mixin generate-grid-columns-groups ( $class-name ) {
+
+	.#{$grid-column-group-class-name} {
+		@include pie-clearfix;
+	}
+
+	.#{$table-class-name} {
+		td, th, tr, thead, tbody, tfoot {
+			&[class*='#{$class-name}-'] {
+				@include float-none( );
+			}
+		}
+	}
+
+}
+
+/*
+ * Generate Flex Grid Columns Groups
+ */
+@mixin generate-flex-grid-columns-groups ( $class-name ) {
+
+  .#{$grid-flex-class-name},
+  .#{$grid-column-group-class-name} {
+        @include experimental-value( display, flex, not -moz, -webkit, not -o, not -ms, not -khtml, official );
+        @include experimental-value( display, flexbox, not -moz, not -webkit, not -o, -ms, not -khtml, not official );
+        @include experimental( flex-wrap, wrap, not -moz, -webkit, not -o, -ms, not -khtml, official );
+        @include experimental( flex-direction, row, not -moz, -webkit, not -o, -ms, not -khtml, official );
+        list-style: none;
+
+
+        &.#{$class-name}-reverse,
+        &.reverse {
+        	@include experimental( flex-direction, row-reverse, -moz, -webkit, not -o, -ms, not -khtml, official );
+        }
+
+        &.#{$class-name}-vertical,
+        &.vertical {
+        	@include experimental( flex-direction, column, -moz, -webkit, not -o, -ms, not -khtml, official );
+        }
+
+        &.#{$class-name}-vertical.#{$class-name}-reverse,
+        &.vertical.reverse {
+        	@include experimental( flex-direction, column-reverse, -moz, -webkit, not -o, -ms, not -khtml, official );
+        }
+    }
+
+}
+
+
+/*
+ * Generates Grid Column Grouping Gutters
+ */
+@mixin generate-grid-columns-groups-gutters ( $class-name, $gutter-width ) {
+
+	.#{$grid-column-group-class-name}.#{$grid-gutters-class-name} {
+		@include margin-left( $gutter-width * -1 );
+		& > [class*='#{$class-name}-'],
+		& > [class*='#{$default-grid-breakpoint}-'] {
+			@include padding-left( $gutter-width );
+			@include margin-bottom( $gutter-width );
+		}
+	}
+
+	.#{$grid-column-group-class-name}.#{$grid-horizontal-gutters-class-name} {
+		@include margin-left( $gutter-width * -1 );
+		& > [class*='#{$class-name}-'],
+		& > [class*='#{$default-grid-breakpoint}-'] {
+			@include padding-left( $gutter-width );
+		}
+	}
+
+	.#{$grid-column-group-class-name}.#{$grid-vertical-gutters-class-name} {
+		& > [class*='#{$class-name}-'],
+		& > [class*='#{$default-grid-breakpoint}-'] {
+			@include margin-bottom( $gutter-width );
+		}
+	}
+
+	.#{$grid-column-group-class-name}.#{$grid-double-gutters-class-name} {
+		@include margin-left( ( $gutter-width * 2 ) * -1 );
+		& > [class*='#{$class-name}-'],
+		& > [class*='#{$default-grid-breakpoint}-'] {
+			@include padding-left( $gutter-width * 2 );
+			@include margin-bottom( $gutter-width * 2 );
+		}
+	}
+
+	.#{$grid-column-group-class-name}.#{$grid-double-horizontal-gutters-class-name} {
+		@include margin-left( ( $gutter-width * 2 ) * -1 );
+		& > [class*='#{$class-name}-'],
+		& > [class*='#{$default-grid-breakpoint}-'] {
+			@include padding-left( $gutter-width * 2 );
+		}
+	}
+
+	.#{$grid-column-group-class-name}.#{$grid-double-vertical-gutters-class-name} {
+		& > [class*='#{$class-name}-'],
+		& > [class*='#{$default-grid-breakpoint}-'] {
+			@include margin-bottom( $gutter-width * 2 );
+		}
+	}
+
+	.#{$grid-column-group-class-name}.#{$grid-half-gutters-class-name} {
+		@include margin-left( ( $gutter-width / 2 ) * -1 );
+		& > [class*='#{$class-name}-'],
+		& > [class*='#{$default-grid-breakpoint}-'] {
+			@include padding-left( $gutter-width / 2 );
+			@include margin-bottom( $gutter-width / 2 );
+		}
+	}
+
+	.#{$grid-column-group-class-name}.#{$grid-half-horizontal-gutters-class-name} {
+		@include margin-left( ( $gutter-width / 2 ) * -1 );
+		& > [class*='#{$class-name}-'],
+		& > [class*='#{$default-grid-breakpoint}-'] {
+			@include padding-left( $gutter-width / 2 );
+		}
+	}
+
+	.#{$grid-column-group-class-name}.#{$grid-half-vertical-gutters-class-name} {
+		& > [class*='#{$class-name}-'],
+		& > [class*='#{$default-grid-breakpoint}-'] {
+			@include margin-bottom( $gutter-width / 2 );
+		}
+	}
+
+	.#{$grid-column-group-class-name}.#{$grid-quarter-gutters-class-name} {
+		@include margin-left( ( $gutter-width / 4 ) * -1 );
+		& > [class*='#{$class-name}-'],
+		& > [class*='#{$default-grid-breakpoint}-'] {
+			@include padding-left( $gutter-width / 4 );
+			@include margin-bottom( $gutter-width / 4 );
+		}
+	}
+
+	.#{$grid-column-group-class-name}.#{$grid-quarter-horizontal-gutters-class-name} {
+		@include margin-left( ( $gutter-width / 4 ) * -1 );
+		& > [class*='#{$class-name}-'],
+		& > [class*='#{$default-grid-breakpoint}-'] {
+			@include padding-left( $gutter-width / 4 );
+		}
+	}
+
+	.#{$grid-column-group-class-name}.#{$grid-quarter-vertical-gutters-class-name} {
+		& > [class*='#{$class-name}-'],
+		& > [class*='#{$default-grid-breakpoint}-'] {
+			@include margin-bottom( $gutter-width / 4 );
+		}
+	}
+
+	.#{$grid-column-group-class-name}.#{$class-name}-#{$grid-gutters-class-name} {
+		@include margin-left( $gutter-width * -1 );
+		& > [class*='#{$class-name}-'],
+		& > [class*='#{$default-grid-breakpoint}-'] {
+			@include padding-left(  $gutter-width );
+			@include margin-bottom( $gutter-width );
+		}
+	}
+
+	.#{$grid-column-group-class-name}.#{$class-name}-#{$grid-horizontal-gutters-class-name} {
+		@include margin-left( $gutter-width * -1 );
+		& > [class*='#{$class-name}-'],
+		& > [class*='#{$default-grid-breakpoint}-'] {
+			@include padding-left(  $gutter-width );
+		}
+	}
+
+	.#{$grid-column-group-class-name}.#{$class-name}-#{$grid-vertical-gutters-class-name} {
+		& > [class*='#{$class-name}-'],
+		& > [class*='#{$default-grid-breakpoint}-'] {
+			@include margin-bottom( $gutter-width );
+		}
+	}
+
+	.#{$grid-column-group-class-name}.#{$class-name}-#{$grid-double-gutters-class-name} {
+		@include margin-left( ( $gutter-width * 2) * -1 );
+		& > [class*='#{$class-name}-'],
+		& > [class*='#{$default-grid-breakpoint}-'] {
+			@include padding-left( $gutter-width * 2 );
+			@include margin-bottom( $gutter-width * 2 );
+		}
+	}
+
+	.#{$grid-column-group-class-name}.#{$class-name}-#{$grid-double-horizontal-gutters-class-name} {
+		@include margin-left( ( $gutter-width * 2) * -1 );
+		& > [class*='#{$class-name}-'],
+		& > [class*='#{$default-grid-breakpoint}-'] {
+			@include padding-left( $gutter-width * 2 );
+		}
+	}
+
+	.#{$grid-column-group-class-name}.#{$class-name}-#{$grid-double-vertical-gutters-class-name} {
+		& > [class*='#{$class-name}-'],
+		& > [class*='#{$default-grid-breakpoint}-'] {
+			@include margin-bottom( $gutter-width * 2 );
+		}
+	}
+
+	.#{$grid-column-group-class-name}.#{$class-name}-#{$grid-half-gutters-class-name} {
+		@include margin-left( ( $gutter-width / 2 ) * -1 );
+		& > [class*='#{$class-name}-'],
+		& > [class*='#{$default-grid-breakpoint}-'] {
+			@include padding-left( $gutter-width / 2 );
+			@include margin-bottom(  $gutter-width / 2 );
+		}
+	}
+
+	.#{$grid-column-group-class-name}.#{$class-name}-#{$grid-half-horizontal-gutters-class-name} {
+		@include margin-left( ( $gutter-width / 2 ) * -1 );
+		& > [class*='#{$class-name}-'],
+		& > [class*='#{$default-grid-breakpoint}-'] {
+			@include padding-left( $gutter-width / 2 );
+		}
+	}
+
+	.#{$grid-column-group-class-name}.#{$class-name}-#{$grid-half-vertical-gutters-class-name} {
+		& > [class*='#{$class-name}-'],
+		& > [class*='#{$default-grid-breakpoint}-'] {
+			@include margin-bottom(  $gutter-width / 2 );
+		}
+	}
+
+	.#{$grid-column-group-class-name}.#{$class-name}-#{$grid-quarter-gutters-class-name} {
+		@include margin-left( ( $gutter-width / 4 ) * -1 );
+		& > [class*='#{$class-name}-'],
+		& > [class*='#{$default-grid-breakpoint}-'] {
+			@include padding-left( $gutter-width / 4 );
+			@include margin-bottom( $gutter-width / 4 );
+		}
+	}
+
+	.#{$grid-column-group-class-name}.#{$class-name}-#{$grid-quarter-horizontal-gutters-class-name} {
+		@include margin-left( ( $gutter-width / 4 ) * -1 );
+		& > [class*='#{$class-name}-'],
+		& > [class*='#{$default-grid-breakpoint}-'] {
+			@include padding-left( $gutter-width / 4 );
+		}
+	}
+
+	.#{$grid-column-group-class-name}.#{$class-name}-#{$grid-quarter-vertical-gutters-class-name} {
+		& > [class*='#{$class-name}-'],
+		& > [class*='#{$default-grid-breakpoint}-'] {
+			@include margin-bottom( $gutter-width / 4 );
+		}
+	}
+
+	.#{$grid-column-group-class-name}.#{$class-name}-#{$grid-no-gutters-class-name} {
+		@include margin-left( 0 );
+		& > [class*='#{$class-name}-'],
+		& > [class*='#{$default-grid-breakpoint}-'] {
+			@include padding-left( 0 );
+			@include margin-bottom( 0 );
+		}
+	}
+
+}
+
+/*
+ * Generates Flex Grid Column Grouping Gutters
+ */
+@mixin generate-flex-grid-columns-groups-gutters ( $class-name, $gutter-width ) {
+
+	.#{$grid-column-group-class-name} {
+		@include pie-clearfix;
+	}
+
+	.#{$grid-column-group-class-name}.#{$grid-gutters-class-name} {
+		@include margin-left( $gutter-width * -1 );
+		& > [class*='#{$class-name}-'],
+		& > [class*='#{$default-grid-breakpoint}-'],
+        & > .all-auto {
+			@include padding-left( $gutter-width );
+			@include margin-bottom( $gutter-width );
+		}
+	}
+
+	.#{$grid-column-group-class-name}.#{$grid-horizontal-gutters-class-name} {
+		@include margin-left( $gutter-width * -1 );
+		& > [class*='#{$class-name}-'],
+		& > [class*='#{$default-grid-breakpoint}-'],
+        & > .all-auto {
+			@include padding-left( $gutter-width );
+		}
+	}
+
+	.#{$grid-column-group-class-name}.#{$grid-vertical-gutters-class-name} {
+		& > [class*='#{$class-name}-'],
+		& > [class*='#{$default-grid-breakpoint}-'],
+        & > .all-auto {
+			@include margin-bottom( $gutter-width );
+		}
+	}
+
+	.#{$grid-column-group-class-name}.#{$grid-double-gutters-class-name} {
+		@include margin-left( ( $gutter-width * 2 ) * -1 );
+		& > [class*='#{$class-name}-'],
+		& > [class*='#{$default-grid-breakpoint}-'],
+        & > .all-auto {
+			@include padding-left( $gutter-width * 2 );
+			@include margin-bottom( $gutter-width * 2 );
+		}
+	}
+
+	.#{$grid-column-group-class-name}.#{$grid-double-horizontal-gutters-class-name} {
+		@include margin-left( ( $gutter-width * 2 ) * -1 );
+		& > [class*='#{$class-name}-'],
+		& > [class*='#{$default-grid-breakpoint}-'],
+        & > .all-auto {
+			@include padding-left( $gutter-width * 2 );
+		}
+	}
+
+	.#{$grid-column-group-class-name}.#{$grid-double-vertical-gutters-class-name} {
+		& > [class*='#{$class-name}-'],
+		& > [class*='#{$default-grid-breakpoint}-'],
+        & > .all-auto {
+			@include margin-bottom( $gutter-width * 2 );
+		}
+	}
+
+	.#{$grid-column-group-class-name}.#{$grid-half-gutters-class-name} {
+		@include margin-left( ( $gutter-width / 2 ) * -1 );
+		& > [class*='#{$class-name}-'],
+		& > [class*='#{$default-grid-breakpoint}-'],
+        & > .all-auto {
+			@include padding-left( $gutter-width / 2 );
+			@include margin-bottom( $gutter-width / 2 );
+		}
+	}
+
+	.#{$grid-column-group-class-name}.#{$grid-half-horizontal-gutters-class-name} {
+		@include margin-left( ( $gutter-width / 2 ) * -1 );
+		& > [class*='#{$class-name}-'],
+		& > [class*='#{$default-grid-breakpoint}-'],
+        & > .all-auto {
+			@include padding-left( $gutter-width / 2 );
+		}
+	}
+
+	.#{$grid-column-group-class-name}.#{$grid-half-vertical-gutters-class-name} {
+		& > [class*='#{$class-name}-'],
+		& > [class*='#{$default-grid-breakpoint}-'],
+        & > .all-auto {
+			@include margin-bottom( $gutter-width / 2 );
+		}
+	}
+
+	.#{$grid-column-group-class-name}.#{$grid-quarter-gutters-class-name} {
+		@include margin-left( ( $gutter-width / 4 ) * -1 );
+		& > [class*='#{$class-name}-'],
+		& > [class*='#{$default-grid-breakpoint}-'],
+        & > .all-auto {
+			@include padding-left( $gutter-width / 4 );
+			@include margin-bottom( $gutter-width / 4 );
+		}
+	}
+
+	.#{$grid-column-group-class-name}.#{$grid-quarter-horizontal-gutters-class-name} {
+		@include margin-left( ( $gutter-width / 4 ) * -1 );
+		& > [class*='#{$class-name}-'],
+		& > [class*='#{$default-grid-breakpoint}-'],
+        & > .all-auto {
+			@include padding-left( $gutter-width / 4 );
+		}
+	}
+
+	.#{$grid-column-group-class-name}.#{$grid-quarter-vertical-gutters-class-name} {
+		& > [class*='#{$class-name}-'],
+		& > [class*='#{$default-grid-breakpoint}-'],
+        & > .all-auto {
+			@include margin-bottom( $gutter-width / 4 );
+		}
+	}
+
+	.#{$grid-column-group-class-name}.#{$class-name}-#{$grid-gutters-class-name} {
+		@include margin-left( $gutter-width * -1 );
+		& > [class*='#{$class-name}-'],
+		& > [class*='#{$default-grid-breakpoint}-'],
+        & > .all-auto {
+			@include padding-left(  $gutter-width );
+			@include margin-bottom( $gutter-width );
+		}
+	}
+
+	.#{$grid-column-group-class-name}.#{$class-name}-#{$grid-horizontal-gutters-class-name} {
+		@include margin-left( $gutter-width * -1 );
+		& > [class*='#{$class-name}-'],
+		& > [class*='#{$default-grid-breakpoint}-'],
+        & > .all-auto {
+			@include padding-left(  $gutter-width );
+		}
+	}
+
+	.#{$grid-column-group-class-name}.#{$class-name}-#{$grid-vertical-gutters-class-name} {
+		& > [class*='#{$class-name}-'],
+		& > [class*='#{$default-grid-breakpoint}-'],
+        & > .all-auto {
+			@include margin-bottom( $gutter-width );
+		}
+	}
+
+	.#{$grid-column-group-class-name}.#{$class-name}-#{$grid-double-gutters-class-name} {
+		@include margin-left( ( $gutter-width * 2) * -1 );
+		& > [class*='#{$class-name}-'],
+		& > [class*='#{$default-grid-breakpoint}-'],
+        & > .all-auto {
+			@include padding-left( $gutter-width * 2 );
+			@include margin-bottom( $gutter-width * 2 );
+		}
+	}
+
+	.#{$grid-column-group-class-name}.#{$class-name}-#{$grid-double-horizontal-gutters-class-name} {
+		@include margin-left( ( $gutter-width * 2) * -1 );
+		& > [class*='#{$class-name}-'],
+		& > [class*='#{$default-grid-breakpoint}-'],
+        & > .all-auto {
+			@include padding-left( $gutter-width * 2 );
+		}
+	}
+
+	.#{$grid-column-group-class-name}.#{$class-name}-#{$grid-double-vertical-gutters-class-name} {
+		& > [class*='#{$class-name}-'],
+		& > [class*='#{$default-grid-breakpoint}-'],
+        & > .all-auto {
+			@include margin-bottom( $gutter-width * 2 );
+		}
+	}
+
+	.#{$grid-column-group-class-name}.#{$class-name}-#{$grid-half-gutters-class-name} {
+		@include margin-left( ( $gutter-width / 2 ) * -1 );
+		& > [class*='#{$class-name}-'],
+		& > [class*='#{$default-grid-breakpoint}-'],
+        & > .all-auto {
+			@include padding-left( $gutter-width / 2 );
+			@include margin-bottom(  $gutter-width / 2 );
+		}
+	}
+
+	.#{$grid-column-group-class-name}.#{$class-name}-#{$grid-half-horizontal-gutters-class-name} {
+		@include margin-left( ( $gutter-width / 2 ) * -1 );
+		& > [class*='#{$class-name}-'],
+		& > [class*='#{$default-grid-breakpoint}-'],
+        & > .all-auto {
+			@include padding-left( $gutter-width / 2 );
+		}
+	}
+
+	.#{$grid-column-group-class-name}.#{$class-name}-#{$grid-half-vertical-gutters-class-name} {
+		& > [class*='#{$class-name}-'],
+		& > [class*='#{$default-grid-breakpoint}-'],
+        & > .all-auto {
+			@include margin-bottom(  $gutter-width / 2 );
+		}
+	}
+
+	.#{$grid-column-group-class-name}.#{$class-name}-#{$grid-quarter-gutters-class-name} {
+		@include margin-left( ( $gutter-width / 4 ) * -1 );
+		& > [class*='#{$class-name}-'],
+		& > [class*='#{$default-grid-breakpoint}-'],
+        & > .all-auto {
+			@include padding-left( $gutter-width / 4 );
+			@include margin-bottom( $gutter-width / 4 );
+		}
+	}
+
+	.#{$grid-column-group-class-name}.#{$class-name}-#{$grid-quarter-horizontal-gutters-class-name} {
+		@include margin-left( ( $gutter-width / 4 ) * -1 );
+		& > [class*='#{$class-name}-'],
+		& > [class*='#{$default-grid-breakpoint}-'],
+        & > .all-auto {
+			@include padding-left( $gutter-width / 4 );
+		}
+	}
+
+	.#{$grid-column-group-class-name}.#{$class-name}-#{$grid-quarter-vertical-gutters-class-name} {
+		& > [class*='#{$class-name}-'],
+		& > [class*='#{$default-grid-breakpoint}-'],
+        & > .all-auto {
+			@include margin-bottom( $gutter-width / 4 );
+		}
+	}
+
+	.#{$grid-column-group-class-name}.#{$class-name}-#{$grid-no-gutters-class-name} {
+		@include margin-left( 0 );
+		& > [class*='#{$class-name}-'],
+		& > [class*='#{$default-grid-breakpoint}-'],
+        & > .all-auto {
+			@include padding-left( 0 );
+			@include margin-bottom( 0 );
+		}
+	}
+
+}
+
+/*
+ * Generate Flex Grid Order
+ */
+@mixin generate-flex-grid-order ( $class-name: null ) {
+	@if $class-name != null {
+		$i: 1;
+		@while $i <= 10 {
+			.#{$class-name}-order-#{$i} {
+				order: #{$i};
+				-ms-flex-order: #{$i};
+				$i: $i + 1;
+			}
+		}
+	}
+	@else if $class-name == null {
+		$i: 1;
+		@while $i <= 10 {
+			.order-#{$i} {
+				order: #{$i};
+				-ms-flex-order: #{$i};
+				$i: $i + 1;
+			}
+		}
+	}
+}
+
+/*
+ * Generate CSS ot JS Bridge
+ */
+@mixin generate-grid-css-js-bridge ( $breakpoints, $base-font-size ) {
+
+    html {
+        &:after {
+            content: js-bridge( $breakpoints );
+            @include display( none );
+        }
+        @include font-size( $base-font-size );
+    }
+
+}
+
+/*
+ * Generate Grid Helper Classes
+ */
+@mixin generate-grid-helper-classes ( $class-name, $gutter-width ) {
+
+	@if $class-name != null {
+		$class-name: '#{$class-name}-';
+	}
+
+	@include generate-text-aligns( $class-name );
+	@include generate-layouts( $class-name );
+	@include generate-spaces( $class-name, $gutter-width );
+	@include generate-displays( $class-name );
+}
+
+/*
+ * Generate Flex Grid Helper Classes
+ */
+@mixin generate-flex-grid-helper-classes ( $class-name ) {
+
+	@if $class-name != null {
+		$class-name: '#{$class-name}-';
+	}
+
+	.#{$grid-column-group-class-name} {
+        .#{$class-name}auto {
+            @include experimental( flex-basis, auto, not -moz, -webkit, not -o, -ms, not -khtml, official );
+            @include experimental( flex-grow, 1, not -moz, -webkit, not -o, -ms, not -khtml, official );
+        }
+    }
+
+	@include generate-flex-layouts( $class-name );
+
+}
+
+/*
+ * Generate Grid Flex Order
+ */
+@mixin grid-flex-order ( $class-name: null ) {
+	@if $class-name != null {
+		$i: 1;
+		@while $i <= 10 {
+			.#{$class-name}-order-#{$i} {
+				order: #{$i};
+				-ms-flex-order: #{$i};
+				$i: $i + 1;
+			}
+		}
+	}
+	@else if $class-name == null {
+		$i: 1;
+		@while $i <= 10 {
+			.order-#{$i} {
+				order: #{$i};
+				-ms-flex-order: #{$i};
+				$i: $i + 1;
+			}
+		}
+	}
+}
+
+/*
+ * Generate Grid
+ */
+@mixin generate-grid ( $breakpoints, $is_flex : false ) {
+
+	.#{$grid-class-name} {
+		@include width( auto, $default-grid-row-max-width );
+		@include margin( 0 auto );
+	}
+
+	@if $is_flex == true {
+		.#{$grid-flex-order-class-name} {
+			flex: 100%;
+		}
+	}
+
+	@each $breakpoint in $breakpoints {
+
+		$media             : nth( $breakpoint, 1 );
+		$class-name        : nth( $breakpoint, 2 );
+		$minimum-width     : nth( $breakpoint, 3 );
+		$maximum-width     : nth( $breakpoint, 4 );
+		$gutter-width      : nth( $breakpoint, 5 );
+		$base-font-size    : nth( $breakpoint, 6 );
+		$no-media-query    : nth( $breakpoint, 7 );
+
+		@if $no-media-query == false {
+			@if $minimum-width and $maximum-width == false {
+				@media #{$media} and ( min-width : $minimum-width ) {
+					@include generate-grid-css-js-bridge( $breakpoints, $base-font-size );
+					@include generate-grid-container( $grid-class-name, $gutter-width );
+
+					@if $is_flex == true {
+						@include generate-flex-grid-columns( $class-name );
+						@include generate-flex-grid-columns-groups( $class-name );
+						@include generate-flex-grid-columns-groups-gutters( $class-name, $gutter-width );
+						@include generate-flex-grid-order( $class-name );
+						@include generate-flex-grid-helper-classes( $class-name );
+					} @else {
+						@include generate-grid-columns( $class-name );
+						@include generate-grid-columns-groups( $class-name );
+						@include generate-grid-columns-groups-gutters( $class-name, $gutter-width );
+					}
+
+					@include generate-grid-helper-classes( $class-name, $gutter-width );
+				}
+			}
+
+			@else if $minimum-width == false and $maximum-width {
+				@media #{$media} and ( max-width : $maximum-width ) {
+					@include generate-grid-css-js-bridge( $breakpoints, $base-font-size );
+					@include generate-grid-container( $grid-class-name, $gutter-width );
+
+					@if $is_flex == true {
+						@include generate-flex-grid-columns( $class-name );
+						@include generate-flex-grid-columns-groups( $class-name );
+						@include generate-flex-grid-columns-groups-gutters( $class-name, $gutter-width );
+						@include generate-flex-grid-order( $class-name );
+						@include generate-flex-grid-helper-classes( $class-name );
+					} @else {
+						@include generate-grid-columns( $class-name );
+						@include generate-grid-columns-groups( $class-name );
+						@include generate-grid-columns-groups-gutters( $class-name, $gutter-width );
+					}
+
+					@include generate-grid-helper-classes( $class-name, $gutter-width );
+				}
+			}
+
+			@else if $minimum-width and $maximum-width {
+				@media #{$media} and ( min-width : $minimum-width ) and ( max-width : $maximum-width ) {
+					@include generate-grid-css-js-bridge( $breakpoints, $base-font-size );
+					@include generate-grid-container( $grid-class-name, $gutter-width );
+
+					@if $is_flex == true {
+						@include generate-flex-grid-columns( $class-name );
+						@include generate-flex-grid-columns-groups( $class-name );
+						@include generate-flex-grid-columns-groups-gutters( $class-name, $gutter-width );
+						@include generate-flex-grid-order( $class-name );
+						@include generate-flex-grid-helper-classes( $class-name );
+					} @else {
+						@include generate-grid-columns( $class-name );
+						@include generate-grid-columns-groups( $class-name );
+						@include generate-grid-columns-groups-gutters( $class-name, $gutter-width );
+					}
+
+					@include generate-grid-helper-classes( $class-name, $gutter-width );
+				}
+			}
+
+			@else if $minimum-width == false and $maximum-width == false {
+				@media #{$media} {
+					@include generate-grid-css-js-bridge( $breakpoints, $base-font-size );
+					@include generate-grid-container( $grid-class-name, $gutter-width );
+
+					@if $is_flex == true {
+						@include generate-flex-grid-columns( $class-name );
+						@include generate-flex-grid-columns-groups( $class-name );
+						@include generate-flex-grid-columns-groups-gutters( $class-name, $gutter-width );
+						@include generate-flex-grid-order( $class-name );
+						@include generate-flex-grid-helper-classes( $class-name );
+					} @else {
+						@include generate-grid-columns( $class-name );
+						@include generate-grid-columns-groups( $class-name );
+						@include generate-grid-columns-groups-gutters( $class-name, $gutter-width );
+					}
+
+					@include generate-grid-helper-classes( $class-name, $gutter-width );
+				}
+			}
+		} @else {
+			@include generate-grid-css-js-bridge( $breakpoints, $base-font-size );
+			@include generate-grid-container( $grid-class-name, $gutter-width );
+
+			@if $is_flex == true {
+				@include generate-flex-grid-columns( $class-name );
+				@include generate-flex-grid-columns-groups( $class-name );
+				@include generate-flex-grid-columns-groups-gutters( $class-name, $gutter-width );
+				@include generate-flex-grid-order( $class-name );
+				@include generate-flex-grid-helper-classes( $class-name );
+			} @else {
+				@include generate-grid-columns( $class-name );
+				@include generate-grid-columns-groups( $class-name );
+				@include generate-grid-columns-groups-gutters( $class-name, $gutter-width );
+			}
+
+			@include generate-grid-helper-classes( $class-name, $gutter-width );
+		}
+	}
+}

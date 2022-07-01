@@ -1,0 +1,44 @@
+@mixin background-attachment ( $attachment : scroll ) {
+	background-attachment: $attachment;
+}
+
+@mixin background-clip ( $clip : border-box ) {
+	background-clip: $clip;
+}
+
+@mixin background-color ( $color ) {
+	background-color: $color;
+}
+
+@mixin background-contain (  ) {
+	@include background-position( center );
+	@include background-repeat( no-repeat );
+	@include background-size( contain );
+}
+
+@mixin background-cover (  ) {
+	@include background-position( center );
+	@include background-repeat( no-repeat );
+	@include background-size( cover );
+}
+
+@mixin background-origin ( $origin : padding-box ) {
+	background-origin: $origin;
+}
+
+@mixin background-position ( $position : center ) {
+	background-position: $position;
+}
+
+@mixin background-repeat ( $repeat : repeat ) {
+	background-repeat: $repeat;
+}
+
+@mixin background-size ( $size : auto ) {
+	background-size: $size;
+}
+
+@mixin background-single (  ) {
+	@include background-position( center );
+	@include background-repeat( no-repeat );
+}

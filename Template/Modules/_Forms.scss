@@ -1,0 +1,268 @@
+.#{$default-form-class-name} {
+
+	fieldset {
+		@include border-no( );
+		@include margin-no( );
+		@include padding-no( );
+
+		legend {
+			@include font-size( $default-form-legend-font-size );
+			@include font-weight( $default-form-legend-font-weight );
+			@include width( 100% );
+			@include border-bottom( $color-grey-10 );
+
+			& + * {
+				-webkit-margin-top-collapse: separate; // webkit hack that makes the legend margins work like they should
+				@include margin( 2em 0 );
+			}
+		}
+	}
+
+	p {
+		&.tip {
+			@include font-size( $default-form-tip-font-size );
+			@include color( $default-form-tip-font-color );
+			@include position-relative( );
+			@include margin( .2em 0 0 .1em );
+		}
+
+		&.label {
+			@include color( $default-form-label-font-color );
+			@include margin-no( );
+			@include padding-no( );
+			white-space: normal;
+		}
+	}
+
+	label {
+		cursor: pointer;
+	}
+
+	@include form-input( );
+
+	select {
+		@include line-height( 2 );
+		cursor: pointer;
+	}
+
+	textarea {
+		@include min-height( $default-form-textarea-height );
+	}
+
+	.control-group {
+		@include line-height( 2 );
+		@include margin-bottom( 1em );
+		@include pie-clearfix;
+
+		.control {
+			@include position-relative( );
+			@include pie-clearfix;
+
+			& > li {
+				@include position-relative( );
+				@include pie-clearfix;
+			}
+
+			& > input,
+			& > select,
+			& > textarea {
+				@include width( 100% );
+
+				& + .fa {
+					@include display( none );
+				}
+			}
+
+			&.append-button,
+			&.append-symbol,
+			&.prepend-button,
+			&.prepend-symbol {
+
+				> span {
+					@include width( 100% );
+					@include position-relative( );
+
+					& > input,
+					& > select,
+					& > textarea {
+						@include width( 100% );
+					}
+				}
+
+				& > input[type="submit"],
+				& > input[type="button"],
+				& > input[type="reset"] {
+					@include width( auto);
+				}
+			}
+
+			&.append-button {
+
+				@include display( table );
+
+				> span {
+
+					@include display( table-cell );
+
+					& > input,
+					& > select,
+					& > textarea {
+						@include border-radius( $border-radius 0 0 $border-radius );
+					}
+				}
+
+				.#{$button-class-name} {
+					@include margin-no( );
+					@include border-radius( 0 $border-radius $border-radius 0 );
+					@include border-no-left( );
+				}
+			}
+
+			&.prepend-button {
+
+				@include display( table );
+
+				> span {
+
+					@include display( table-cell );
+
+					& > input,
+					& > select,
+					& > textarea {
+						@include border-radius( 0 $border-radius $border-radius 0 );
+					}
+				}
+
+				.#{$button-class-name} {
+					@include margin-no( );
+					@include border-radius( $border-radius 0 0 $border-radius );
+					@include border-no-right( );
+				}
+			}
+
+			&.append-symbol {
+
+				> span {
+
+					@include display( block );
+
+					& > input,
+					& > select,
+					& > textarea {
+						padding-right: $default-form-append-width;
+					}
+
+					& > [class^="fa-"],
+					& > [class*=" fa-"] {
+						@include position-absolute( (
+							right: 1em,
+							top: .86em,
+							pointer-events: none
+						));
+					}
+				}
+			}
+
+			&.prepend-symbol {
+
+				> span {
+
+					@include display( block );
+
+					& > input,
+					& > select,
+					& > textarea {
+						padding-left: $default-form-append-width;
+					}
+
+					& > [class^="fa-"],
+					& > [class*=" fa-"] {
+						@include position-absolute( (
+							left: 1em,
+							top: .86em,
+							pointer-events: none
+						));
+					}
+				}
+			}
+		}
+
+		input[type="radio"],
+		input[type="checkbox"] {
+			@include position-absolute( );
+			@include border-no( );
+			cursor: pointer;
+
+			& + label {
+				@include margin-top( -.28em );
+				@include padding-left( 1.25em );
+				@include text-vertical-align( super );
+				@include display( inline-block );
+			}
+		}
+
+		.inline {
+
+			li {
+				@include padding-no( );
+
+				label {
+					@include margin-right( 1em );
+				}
+			}
+		}
+
+		&.validation {
+
+			&.error {
+
+				input, textarea, select {
+					@include border( $default-form-error-color );
+				}
+
+				p {
+					&.tip {
+						@include color( shade( $default-form-error-color, 10% ) );
+					}
+				}
+			}
+
+			&.warning {
+				input, textarea, select {
+					@include border( $default-form-warning-color );
+				}
+
+				p {
+					&.tip {
+						@include color( darken( $default-form-warning-color, 10% ) );
+					}
+				}
+			}
+		}
+
+		&.required {
+
+			& label,
+			& p.label {
+				@include color( $default-form-color );
+
+				&:after {
+					content: "*";
+					@include color( $default-form-error-color );
+					@include margin-left( .6em );
+					@include font-size( .95em );
+					@include width( 1.25em );
+				}
+			}
+
+			ul.control {
+				label {
+					&:after {
+						content: "";
+					}
+				}
+			}
+		}
+	}
+
+}

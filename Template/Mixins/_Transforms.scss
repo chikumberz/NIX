@@ -1,0 +1,70 @@
+/*
+ * Transforms
+ *
+ * Usage:
+ * @include transform-rotate( $rotate );
+ * @include transform-scale( $x, $y );
+ * @include transform-scale-3d( $x, $y, $z );
+ * @include transform-translate-3d( $x, $y, $z );
+ * @include transform-translate-x( $x );
+ * @include transform-translate-y( $y );
+ * @include transform-translate-z( $z );
+ * @include transform-easing( $x, $y, $z, $transition-speed );
+ */
+
+@mixin transform-rotate ( $rotate : $default-transform-rotate ) {
+	-webkit-transform: rotate( $rotate );
+	-o-transform: rotate( $rotate );
+	-moz-transform: rotate( $rotate );
+	transform: rotate( $rotate );
+}
+
+@mixin transform-scale ( $x : $default-transform-scale-x, $y : $default-transform-scale-y ) {
+	-webkit-transform: scale( $x, $y );
+	-o-transform: scale( $x, $y );
+	-moz-transform: scale( $x, $y );
+	transform: scale( $x, $y );
+}
+
+@mixin transform-scale-3d ( $x : $default-transform-scale-x, $y : $default-transform-scale-y, $z : $default-transform-scale-z ) {
+	-webkit-transform: scale3d( $x, $y, $z );
+	-o-transform: scale3d( $x, $y, $z );
+	-moz-transform: scale3d( $x, $y, $z );
+	transform: scale3d( $x, $y, $z );
+}
+
+@mixin transform-translate-3d ( $x : $default-transform-translate-x, $y : $default-transform-translate-y, $z : $default-transform-translate-z ) {
+	-webkit-transform: translate3d( $x, $y, $z );
+	-o-transform: translate3d( $x, $y, $z );
+	-moz-transform: translate3d( $x, $y, $z );
+	transform: translate3d( $x, $y, $z );
+}
+
+@mixin transform-translate-x ( $x : $default-transform-translate-x ) {
+	-webkit-transform: translateX( $x );
+	-o-transform: translateX( $x );
+	-moz-transform: translateX( $x );
+	transform: translateX( $x );
+}
+
+@mixin transform-translate-y ( $y : $default-transform-translate-y ) {
+	-webkit-transform: translateY( $y );
+	-o-transform: translateY( $y );
+	-moz-transform: translateY( $y );
+	transform: translateY( $y );
+}
+
+@mixin transform-translate-z ( $z : $default-transform-translate-z ) {
+	-webkit-transform: translateZ( $z );
+	-o-transform: translateZ( $z );
+	-moz-transform: translateZ( $z );
+	transform: translateZ( $z );
+}
+
+@mixin transform-easing ( $x : $default-transform-easing-x, $y : $default-transform-easing-y, $z : $default-transform-easing-z, $transition-speed : $default-transform-easing-speed ) {
+	@include transform-translate-3d( $x, $y, $z );
+	-webkit-transition: -webkit-transform $transition-speed ease-out;
+	-o-transition: -o-transform $transition-speed ease-out;
+	-moz-transition: -moz-transform $transition-speed ease-out;
+	transition: transform $transition-speed ease-out;
+}

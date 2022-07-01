@@ -1,0 +1,131 @@
+/**
+ * Ink class names prefix
+ * Used in all of Inks components root elements
+ */
+/**
+ * Grid class names
+ */
+/**
+ * Alerts class names
+ */
+/**
+ * Badges class names
+ */
+/**
+ * Buttons class names
+ */
+/**
+ * Forms class names
+ */
+/**
+ * Labels class names
+ */
+/**
+ * Navigation class names
+ */
+/**
+ * Dropdown class names
+ */
+/**
+ * Tables class names
+ */
+/**
+ * Images class names
+ */
+/**
+ * JS UI components classe names
+ */
+/**
+ * Sets the grids maximum width
+ * @var $grid-max-width ( pixels|ems|percentage )
+ */
+/*!
+ * Sets the grids breakpoint
+ *
+ * To add a new break point you'll need to add an element to the list.
+ *
+ * Here's an example: ( class-name-prefix, minimum-width, maximum-width, gutter-width, no-media-query).
+ *
+ * media: media type.
+ * class-name-prefix: this is the prefix used in tons of inks classes i.e.: large-100, small-40, etc.
+ * minimum-width: ( pixels|null ) the minimum width for the breakpoint
+ * maximum-width: ( pixels|null ) the maximum width for the breakpoint
+ * gutter-width: ( ems ) the width for the gutters (space between grid columns) for the breakpoint
+ * no-media-query: (true|false) if you need to support IE8 set this to true on a single breakpoint.
+ *                 Since IE8 does not support the @media statement leaving one of the breakpoints
+ *                 outside a @media query let's you use the grid in IE8.
+ *
+ */
+/*
+ * Background Gradient Horizontal
+ *
+ * Usage:
+ * @include background-gradient-horizontal( $left-colour, $right-colour );
+ */
+/*
+ * Background Gradient Vertical
+ *
+ * Usage:
+ * @include background-gradient-vertical( $top-colour, $bottom-colour );
+ */
+/* line 20, E:/Server/www/NIX/Template/nix.scss */
+div {
+  width: 500px;
+  height: 300px;
+  background: red;
+  /* Fallback solid color for old browsers */
+  background: -linear-gradient(to right, red 0%, black 100%...);
+  /* W3C */
+  background: -moz-linear-gradient(left, red 0%, black 100%);
+  /* FF 3.6+ */
+  background: -ms-linear-gradient(left, red 0%, black 100%);
+  /* IE 10+ */
+  background: -o-linear-gradient(left, red 0%, black 100%);
+  /* Opera 11.10+ */
+  background: -webkit-linear-gradient(left, red 0%, black 100%);
+  /* Chrome 10+, Safari 5.1+ */
+  background: -webkit-gradient(linear, left top, right top, color-stop(0%, red), color-stop(100%, black));
+  /* Chrome, Safari 4+ */ }
+  /* line 7, E:/Server/www/NIX/Template/Mixins/Typographies */
+  div h1 {
+    font-size: 2.2em;
+    margin-top: 0;
+    margin-bottom: 0.593181818em; }
+  /* line 12, E:/Server/www/NIX/Template/Mixins/Typographies */
+  div h2 {
+    font-size: 1.75em;
+    margin-top: 0;
+    margin-bottom: 0.745714286em; }
+  /* line 17, E:/Server/www/NIX/Template/Mixins/Typographies */
+  div h3 {
+    font-size: 1.5em;
+    margin-top: 0;
+    margin-bottom: 0.87em; }
+  /* line 22, E:/Server/www/NIX/Template/Mixins/Typographies */
+  div h4 {
+    font-size: 1.25em;
+    margin-top: 0;
+    margin-bottom: 1.044em; }
+  /* line 27, E:/Server/www/NIX/Template/Mixins/Typographies */
+  div h5 {
+    font-size: 1.1em;
+    margin-top: 0;
+    margin-bottom: 1.186363636em; }
+  /* line 32, E:/Server/www/NIX/Template/Mixins/Typographies */
+  div h6 {
+    font-size: 1.1em;
+    margin-top: 0;
+    margin-bottom: 1.186363636em; }
+  /* line 37, E:/Server/www/NIX/Template/Mixins/Typographies */
+  div p {
+    font-size: 1em;
+    margin-top: 0;
+    margin-bottom: 1.305em; }
+  /* line 42, E:/Server/www/NIX/Template/Mixins/Typographies */
+  div table {
+    font-size: 1em;
+    margin-top: 0;
+    margin-bottom: 1.305em; }
+  /* line 48, E:/Server/www/NIX/Template/Mixins/Typographies */
+  div h1:first-child, div h2:first-child, div h3:first-child, div h4:first-child, div h5:first-child, div h6:first-child, div p:first-child {
+    margin-top: 0; }

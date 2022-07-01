@@ -1,0 +1,27 @@
+@function js-bridge ( $breakpoints ) {
+
+    $counter    : 1;
+    $length     : length( $breakpoints );
+    $bridge     : '[';
+
+    @each $breakpoint in $breakpoints {
+
+        $class-name		: nth( $breakpoint, 2 );
+        $minimum-width  : nth( $breakpoint, 3 );
+        $maximum-width  : nth( $breakpoint, 4 );
+
+        @if $counter == $length {
+            $bridge : $bridge + '{"name":"#{$class-name}", "size":{"min":"#{$minimum-width}","max":"#{$maximum-width}"}}';
+        } @else {
+            $bridge : $bridge + '{"name":"#{$class-name}", "size":{"min":"#{$minimum-width}","max":"#{$maximum-width}"}},';
+        }
+
+        $counter: $counter + 1;
+
+    }
+
+    $bridge: $bridge + ']';
+
+    @return $bridge;
+
+}

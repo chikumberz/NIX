@@ -1,0 +1,22 @@
+/*
+ * Buttons Configurations
+ */
+$button-class-name						: #{$class-name-prefix}-button !default;
+$button-group-class-name 				: button-group;
+$button-toolbar-class-name 				: button-toolbar;
+$button-shape-pill-class-name 			: pill;
+$button-shape-square-class-name 		: square;
+$button-shape-rounded-class-name 		: rounded;
+
+
+$default-button-height : 30px;
+$default-button-padding : 0px 14px;
+$default-button-font-size : $default-font-size;
+
+$button-breakpoints	: (
+    ( 'xlarge', 68px, 0px 38px, 18px )
+    ( 'large', 54px, 0px 32px, 16px )
+    ( 'medium', 44px, 0px 24px, 14px )
+    ( 'small', 34px, 0px 14px, 12px )
+    ( 'tiny', 20px, 0px 6px, 10px )
+);

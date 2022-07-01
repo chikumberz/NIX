@@ -1,0 +1,236 @@
+/*
+ * Colors Configurations
+ */
+$color-white			: #ffffff !default;
+$color-black			: #000000 !default;
+$color-aqua 			: #1abc9c !default;
+$color-aqua-dark 		: #16a085 !default;
+$color-aqua-light		: #48cfad !default;
+$color-blue 			: #3498db !default;
+$color-blue-dark 		: #2980b9 !default;
+$color-blue-light 		: #4fc1e9 !default;
+$color-green 			: #2ecc71 !default;
+$color-green-dark 		: #27ae60 !default;
+$color-green-light 		: #8cc152 !default;
+$color-orange 			: #f39c12 !default;
+$color-orange-dark		: #d35400 !default;
+$color-orange-light		: #f4a353 !default;
+$color-pink 			: #eb5367 !default;
+$color-pink-dark 		: #ec87c0 !default;
+$color-pink-light 		: #ec87c0 !default;
+$color-purple			: #9b59b6 !default;
+$color-purple-dark 		: #8e44ad !default;
+$color-purple-light 	: #ac92ec !default;
+$color-red 				: #e74c3c !default;
+$color-red-dark			: #d42e1c !default;
+$color-red-light		: #fc6e51 !default;
+$color-yellow 			: #f1c40f !default;
+$color-yellow-dark 		: #f39c12 !default;
+$color-yellow-light 	: #ffce54 !default;
+
+$color-asbestos 		: #7f8c8d;
+$color-asphalt 			: #34495e;
+$color-bondi-blue 		: #008D9C;
+$color-cloud 			: #ecf0f1;
+$color-concrete 		: #95a5a6;
+$color-grey-blue-light 	: #ccd1d9;
+$color-grey-blue 		: #aab2bd;
+$color-grey-blue-dark 	: #656d78;
+$color-grey-blue-x-dark : #434a54;
+$color-midnight 		: #2c3e50;
+$color-off-white 		: #f5f7fa;
+$color-off-white-dark 	: #e6e9ed;
+$color-river-bed 		: #434d5a;
+$color-silver 			: #bdc3c7;
+
+$color-grey-95			: lighten( $color-black, 5% ) !default;
+$color-grey-90			: lighten( $color-black, 10% ) !default;
+$color-grey-85			: lighten( $color-black, 15% ) !default;
+$color-grey-80			: lighten( $color-black, 20% ) !default;
+$color-grey-75			: lighten( $color-black, 25% ) !default;
+$color-grey-70			: lighten( $color-black, 30% ) !default;
+$color-grey-65			: lighten( $color-black, 35% ) !default;
+$color-grey-60			: lighten( $color-black, 40% ) !default;
+$color-grey-55			: lighten( $color-black, 45% ) !default;
+$color-grey-50			: lighten( $color-black, 50% ) !default;
+$color-grey-45			: lighten( $color-black, 55% ) !default;
+$color-grey-40			: lighten( $color-black, 60% ) !default;
+$color-grey-35			: lighten( $color-black, 65% ) !default;
+$color-grey-30			: lighten( $color-black, 70% ) !default;
+$color-grey-25			: lighten( $color-black, 75% ) !default;
+$color-grey-20			: lighten( $color-black, 80% ) !default;
+$color-grey-15			: lighten( $color-black, 85% ) !default;
+$color-grey-10			: lighten( $color-black, 90% ) !default;
+$color-grey-5			: lighten( $color-black, 95% ) !default;
+
+$ar-colors-all 					: (
+	'white'						: $color-white,
+	'black'						: $color-black,
+	'grey-95'					: $color-grey-95,
+	'grey-90'					: $color-grey-90,
+	'grey-85'					: $color-grey-85,
+	'grey-80'					: $color-grey-80,
+	'grey-75'					: $color-grey-75,
+	'grey-70'					: $color-grey-70,
+	'grey-65'					: $color-grey-65,
+	'grey-60'					: $color-grey-60,
+	'grey-55'					: $color-grey-55,
+	'grey-50'					: $color-grey-50,
+	'grey-45'					: $color-grey-45,
+	'grey-40'					: $color-grey-40,
+	'grey-35'					: $color-grey-35,
+	'grey-30'					: $color-grey-30,
+	'grey-25'					: $color-grey-25,
+	'grey-20'					: $color-grey-20,
+	'grey-10'					: $color-grey-10,
+	'grey-5'					: $color-grey-5,
+
+	'white'						: $color-white,
+	'aqua'						: $color-aqua,
+	'blue'						: $color-blue,
+	'green'						: $color-green,
+	'orange'					: $color-orange,
+	'pink'						: $color-pink,
+	'purple'					: $color-purple,
+	'red'						: $color-red,
+	'yellow'					: $color-yellow,
+
+	'aqua-dark'					: $color-aqua-dark,
+	'blue-dark'					: $color-blue-dark,
+	'green-dark'				: $color-green-dark,
+	'orange-dark'				: $color-orange-dark,
+	'pink-dark'					: $color-pink-dark,
+	'purple-dark'				: $color-purple-dark,
+	'red-dark'					: $color-red-dark,
+	'yellow-dark'				: $color-yellow-dark,
+
+	'aqua-light'				: $color-aqua-light,
+	'blue-light'				: $color-blue-light,
+	'green-light'				: $color-green-light,
+	'orange-light'				: $color-orange-light,
+	'pink-light'				: $color-pink-light,
+	'purple-light'				: $color-purple-light,
+	'red-light'					: $color-red-light,
+	'yellow-light'				: $color-yellow-light,
+
+	'asbestos'					: $color-asbestos,
+	'asphalt'					: $color-asphalt,
+	'bondi-blue'				: $color-bondi-blue,
+	'cloud'						: $color-cloud,
+	'concrete'					: $color-concrete,
+	'grey-blue-light'			: $color-grey-blue-light,
+	'grey-blue'					: $color-grey-blue,
+	'grey-blue-dark'			: $color-grey-blue-dark,
+	'grey-blue-x-dark'			: $color-grey-blue-x-dark,
+	'midnight'					: $color-midnight,
+	'off-white'					: $color-off-white,
+	'off-white-dark'			: $color-off-white-dark,
+	'river-bed' 				: $color-river-bed,
+	'silver'					: $color-silver
+);
+
+$ar-colors-mono					: (
+	'white'						: $color-white,
+	'black'						: $color-black,
+	'grey-95'					: $color-grey-95,
+	'grey-90'					: $color-grey-90,
+	'grey-85'					: $color-grey-85,
+	'grey-80'					: $color-grey-80,
+	'grey-75'					: $color-grey-75,
+	'grey-70'					: $color-grey-70,
+	'grey-65'					: $color-grey-65,
+	'grey-60'					: $color-grey-60,
+	'grey-55'					: $color-grey-55,
+	'grey-50'					: $color-grey-50,
+	'grey-45'					: $color-grey-45,
+	'grey-40'					: $color-grey-40,
+	'grey-35'					: $color-grey-35,
+	'grey-30'					: $color-grey-30,
+	'grey-25'					: $color-grey-25,
+	'grey-20'					: $color-grey-20,
+	'grey-10'					: $color-grey-10,
+	'grey-5'					: $color-grey-5
+);
+
+$ar-colors-primary				: (
+	'grey'						: $color-grey-50,
+	'black'						: $color-black,
+	'white'						: $color-white,
+	'aqua'						: $color-aqua,
+	'blue'						: $color-blue,
+	'green'						: $color-green,
+	'orange'					: $color-orange,
+	'pink'						: $color-pink,
+	'purple'					: $color-purple,
+	'red'						: $color-red,
+	'yellow'					: $color-yellow
+);
+
+$ar-colors-primary-dark		: (
+	'aqua-dark'					: $color-aqua-dark,
+	'blue-dark'					: $color-blue-dark,
+	'green-dark'				: $color-green-dark,
+	'orange-dark'				: $color-orange-dark,
+	'pink-dark'					: $color-pink-dark,
+	'purple-dark'				: $color-purple-dark,
+	'red-dark'					: $color-red-dark,
+	'yellow-dark'				: $color-yellow-dark
+);
+
+$ar-colors-primary-light		: (
+	'aqua-light'				: $color-aqua-light,
+	'blue-light'				: $color-blue-light,
+	'green-light'				: $color-green-light,
+	'orange-light'				: $color-orange-light,
+	'pink-light'				: $color-pink-light,
+	'purple-light'				: $color-purple-light,
+	'red-light'					: $color-red-light,
+	'yellow-light'				: $color-yellow-light
+);
+
+$ar-colors-secondary			: (
+	'asbestos'					: $color-asbestos,
+	'asphalt'					: $color-asphalt,
+	'bondi-blue'				: $color-bondi-blue,
+	'cloud'						: $color-cloud,
+	'concrete'					: $color-concrete,
+	'grey-blue-light'			: $color-grey-blue-light,
+	'grey-blue'					: $color-grey-blue,
+	'grey-blue-dark'			: $color-grey-blue-dark,
+	'grey-blue-x-dark'			: $color-grey-blue-x-dark,
+	'midnight'					: $color-midnight,
+	'off-white'					: $color-off-white,
+	'off-white-dark'			: $color-off-white-dark,
+	'river-bed' 				: $color-river-bed,
+	'silver'					: $color-silver
+);
+
+$ar-colors-form 				: (
+	'grey'						: $color-grey-50,
+	'black'						: $color-black,
+	'white'						: $color-white,
+	'aqua'						: $color-aqua,
+	'blue'						: $color-blue,
+	'green'						: $color-green,
+	'orange'					: $color-orange,
+	'pink'						: $color-pink,
+	'purple'					: $color-purple,
+	'red'						: $color-red,
+	'yellow'					: $color-yellow,
+	'asbestos'					: $color-asbestos,
+	'asphalt'					: $color-asphalt,
+	'bondi-blue'				: $color-bondi-blue,
+	'grey-blue'					: $color-grey-blue,
+	'silver'					: $color-silver
+);
+
+$text-color				: $color-grey-65 !default;
+$heading-color			: $color-grey-75 !default;
+$body-text-color		: $color-white !default;
+$body-background-color	: $color-white !default;
+
+$link-color				: $color-blue !default;
+$link-visited-color		: $color-grey-50 !default;
+$link-active-color		: darken( $color-red, 5% ) !default;
+$link-hover-color		: darken( $color-blue, 5% ) !default;
+$link-focus-color		: $link-color !default;

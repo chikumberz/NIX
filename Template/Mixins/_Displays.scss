@@ -1,0 +1,96 @@
+/*
+ * Display
+ *
+ * Usage:
+ * @include display( $display );
+ * @include hide( );
+ * @include hide-visually( );
+ * @include show( $display );
+ */
+@mixin display ( $type: block ) {
+	display: $type;
+}
+
+@mixin hide ( ) {
+	display: none !important;
+}
+
+@mixin hide-visually ( ) {
+	margin: -1px;
+	padding: 0;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	clip: rect( 0 0 0 0 );
+	clip: rect( 0, 0, 0, 0 );
+	position: absolute;
+}
+
+@mixin show ( $type : block ) {
+	@include display( $type );
+}
+
+/*
+ * Opacity
+ *
+ * Usage:
+ * @include opacity( $opacity );
+ */
+@mixin opacity ( $opacity : $default-display-opacity ) {
+	opacity: $opacity;
+	$opacity-ie: $opacity * 100;
+	filter: alpha( opacity=$opacity-ie );
+}
+@mixin transparency ( $transparency : $default-display-opacity ) {
+	@include opacity( $transparency );
+}
+
+/*
+ * Overflow
+ *
+ * Usage:
+ * @include overflow( $overflow );
+ */
+@mixin overflow ( $overflow : $default-display-overflow ) {
+	overflow: $overflow;
+}
+
+/*
+ * Generate Visibility Classes
+ */
+@mixin generate-displays ( $class-prefix : null ) {
+
+    .#{$class-prefix}hide {
+       @include hide( );
+    }
+
+    .#{$class-prefix}show {
+    	@include show( inherit !important );
+    }
+
+    table.#{$class-prefix}show {
+        @include display( table );
+    }
+
+    thead.#{$class-prefix}show {
+         @include display( table-header-group );
+    }
+
+    tbody.#{$class-prefix}show {
+         @include display( table-row-group );
+    }
+
+    tfoot.#{$class-prefix}show {
+        @include display( table-footer-group );
+    }
+
+    tr.#{$class-prefix}show {
+        @include display( table-row );
+    }
+
+    th.#{$class-prefix}show,
+    td.#{$class-prefix}show {
+        @include display( table-cell );
+    }
+
+}

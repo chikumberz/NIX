@@ -1,0 +1,61 @@
+/**
+ * Ink class names prefix
+ * Used in all of Inks components root elements
+ */
+$class-name-prefix             		: 'nix' !default;
+
+
+/**
+ * Alerts class names
+ */
+$alert-class-name: #{$class-name-prefix}-alert !default;
+
+/**
+ * Badges class names
+ */
+$badge-class-name: #{$class-name-prefix}-badge !default;
+
+/**
+ * Forms class names
+ */
+$form-class-name: #{$class-name-prefix}-form !default;
+
+/**
+ * Labels class names
+ */
+$label-class-name: #{$class-name-prefix}-label !default;
+
+/**
+ * Navigation class names
+ */
+$navigation-class-name: #{$class-name-prefix}-navigation !default;
+
+/**
+ * Dropdown class names
+ */
+$dropdown-class-name: #{$class-name-prefix}-dropdown !default;
+
+/**
+ * Tables class names
+ */
+$table-class-name: #{$class-name-prefix}-table !default;
+
+/**
+ * Images class names
+ */
+$image-class-name: #{$class-name-prefix}-image !default;
+
+/**
+ * JS UI components classe names
+ */
+$carousel-class-name        : #{$class-name-prefix}-carousel !default;
+$drawer-class-name          : #{$class-name-prefix}-drawer !default;
+$shade-class-name           : #{$class-name-prefix}-shade !default;
+$modal-class-name           : #{$class-name-prefix}-modal !default;
+$progress-bar-class-name    : #{$class-name-prefix}-progress-bar !default;
+$sortable-list-class-name   : #{$class-name-prefix}-sortable-list !default;
+$tabs-class-name            : #{$class-name-prefix}-tabs !default;
+$tagfield-class-name        : #{$class-name-prefix}-tagfield !default;
+$tag-class-name             : #{$class-name-prefix}-tag !default;
+$tooltip-class-name         : #{$class-name-prefix}-tooltip !default;
+$tree-view-classname        : #{$class-name-prefix}-tree-view !default;

@@ -1,0 +1,86 @@
+<?php
+
+	$_['page_title']                     = 'Setting Management';
+	$_['page_description']               = 'Edit Setting';
+	
+	$_['field_title']                    = 'Website Title:';
+	$_['field_description']              = 'Website Description:';
+	$_['field_address']                  = 'Address:';
+	$_['field_error_display']            = 'Display Error:';
+	$_['field_error_log']                = 'Save Error Log:';
+	$_['field_error_log_file']           = 'Error Log File:';
+	$_['field_maintenance']              = 'Maintenance:';
+	$_['field_seo_url']                  = 'SEO URL:';
+	$_['field_sql_log']                  = 'Log SQL Transactions:';
+	$_['field_sql_log_file']             = 'Log SQL Transactions File:';
+	$_['field_class_log']                = 'Class Log:';
+	$_['field_class_log_file']           = 'Class Log File:';
+	$_['field_user_status_active']       = 'Default User Status:';
+	$_['field_backend_url']              = 'Admin Access Page:';
+	$_['field_backend_theme']            = 'Backend Theme:';
+	$_['field_frontend_theme']           = 'Frontend Theme:';
+	$_['field_backend_language']         = 'Backend Language:';
+	$_['field_frontend_language']        = 'Frontend Language:';
+	$_['field_avatar_size']              = 'Avatar Size:';
+	$_['field_table_show']               = 'Table Number of Items:';
+	$_['field_table_show_default']       = 'Table Default Number of Items:';
+	
+	$_['placeholder_title']              = '';
+	$_['placeholder_description']        = '';
+	$_['placeholder_address']            = '';
+	$_['placeholder_error_display']      = '';
+	$_['placeholder_error_display_yes']  = 'Yes';
+	$_['placeholder_error_display_no']   = 'No';
+	$_['placeholder_error_log']          = '';
+	$_['placeholder_error_log_yes']      = 'Yes';
+	$_['placeholder_error_log_no']       = 'No';
+	$_['placeholder_error_log_file']     = '';
+	$_['placeholder_maintenance']        = '';
+	$_['placeholder_maintenance_yes']    = 'Yes';
+	$_['placeholder_maintenance_no']     = 'No';
+	$_['placeholder_seo_url']            = '';
+	$_['placeholder_seo_url_yes']        = 'Yes';
+	$_['placeholder_seo_url_no']         = 'No';
+	$_['placeholder_sql_log']            = '';
+	$_['placeholder_sql_log_yes']        = 'Yes';
+	$_['placeholder_sql_log_no']         = 'No';
+	$_['placeholder_sql_log_file']       = '';
+	$_['placeholder_class_log']          = '';
+	$_['placeholder_class_log_yes']      = 'Yes';
+	$_['placeholder_class_log_no']       = 'No';
+	$_['placeholder_class_log_file']     = '';
+	$_['placeholder_user_status_active'] = '';
+	$_['placeholder_backend_url']        = '';
+	$_['placeholder_backend_theme']      = '';
+	$_['placeholder_frontend_theme']     = '';
+	$_['placeholder_backend_language']   = '';
+	$_['placeholder_frontend_language']  = '';
+	$_['placeholder_avatar_size']  		 = 'Width x Height';
+	$_['placeholder_table_show']         = '';
+	$_['placeholder_table_show_default'] = '';
+	
+	$_['tip_title']                      = '';
+	$_['tip_description']                = '';
+	$_['tip_address']                    = '';
+	$_['tip_error_display']              = '';
+	$_['tip_error_log']                  = '';
+	$_['tip_error_log_file']             = '';
+	$_['tip_maintenance']                = '';
+	$_['tip_seo_url']                    = '';
+	$_['tip_sql_log']                    = '';
+	$_['tip_sql_log_file']               = '';
+	$_['tip_class_log']                  = '';
+	$_['tip_class_log_file']             = '';
+	$_['tip_user_status_active']         = '';
+	$_['tip_backend_url']                = '';
+	$_['tip_backend_theme']              = '';
+	$_['tip_frontend_theme']             = '';
+	$_['tip_backend_language']           = '';
+	$_['tip_frontend_language']          = '';
+	$_['tip_avatar_size']          		 = '';
+	$_['tip_table_show']                 = '';
+	$_['tip_table_show_default']         = '';
+	
+	
+	$_['validate_setting']               = 'Setting is not valid. Please enter the valid setting.';
+	$_['validate_access_tokken']         = 'Sorry but invalid access tokken.';

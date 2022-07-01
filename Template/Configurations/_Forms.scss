@@ -1,0 +1,33 @@
+$default-form-class-name 					: #{$class-name-prefix}-form !default;
+
+$default-form-font-family 					: $default-font-family;
+$default-form-font-weight 					: $default-font-weight;
+$default-form-font-size 					: $default-font-size;
+
+$default-form-spacing 						: 5px;
+$default-form-padding 						: 4px 6px;
+$default-form-append-width 					: 2.5em;
+
+$default-form-border-size 					: 1px;
+$default-form-border-radius 				: $default-border-radius;
+
+$default-form-color							: $default-font-color;
+$default-form-error-color					: $color-red;
+$default-form-warning-color					: $color-yellow;
+$default-form-border-color 					: $color-grey-15;
+$default-form-border-focus-color 			: $color-blue;
+$default-form-background-color 				: $color-white;
+$default-form-background-disable-color 		: $color-grey-5;
+
+
+$default-form-tip-font-color 				: tint( $default-font-color, 35% );
+$default-form-tip-font-size 				: .875em;
+
+$default-form-label-font-color				: $default-font-color;
+$default-form-label-font-size				: ;
+
+$default-form-legend-font-color				: ;
+$default-form-legend-font-weight			: 700;
+$default-form-legend-font-size				: 1.438em;
+
+$default-form-textarea-height 				: 5em;

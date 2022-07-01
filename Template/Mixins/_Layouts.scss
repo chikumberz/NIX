@@ -1,0 +1,268 @@
+/*
+ * Box sizing
+ *
+ * Usage:
+ * @include box-sizing( $option );
+ */
+@mixin box-sizing ( $option : content-box ) {
+	-webkit-box-sizing: $option;
+	-moz-box-sizing: $option;
+	box-sizing: $option;
+}
+
+/*
+ * Layout Horizontal Alignment
+ *
+ * Usage:
+ * @include center( );
+ * @include center-vertical( );
+ */
+@mixin center ( ) {
+	float: none;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/*
+ * Layout Vertical Alignment
+ *
+ * Usage:
+ * @include position( $position, $arguments );
+ */
+@mixin vertical-align ( $position ) {
+	vertical-align: $position;
+}
+
+@mixin center-vertical ( ) {
+	position: relative;
+ 	top: 50%;
+	@include transform-translate-y ( -50% );
+}
+
+
+/*
+ * Layout Float
+ *
+ * Usage:
+ * @include float( $direction );
+ * @include float-clear( );
+ * @include float-no( );
+ * @include float-left( );
+ * @include float-right( );
+ */
+@mixin float ( $direction : left ) {
+	float: $direction;
+}
+
+@mixin float-clear ( ) {
+	@include float-none( );
+	@include clear-both( );
+}
+
+@mixin float-none ( ) {
+	@include float( none );
+}
+
+
+@mixin float-left ( ) {
+	@include float( left );
+}
+
+@mixin float-right ( ) {
+	@include float( right );
+}
+
+/*
+ * Layout Clear Floats
+ *
+ * Usage:
+ * @include clear( $direction );
+ * @include clear-both( );
+ * @include clear-none( );
+ * @include clear-left( );
+ * @include clear-right( );
+ * @include clearfix( );
+ */
+@mixin clear ( $direction : both ) {
+	clear: $direction;
+}
+
+@mixin clear-both ( ) {
+	@include clear( both );
+}
+
+@mixin clear-none ( ) {
+	@include clear( none );
+}
+
+@mixin clear-left ( ) {
+	@include clear( left );
+}
+
+@mixin clear-right ( ) {
+	@include clear( right );
+}
+
+@mixin clearfix ( ) {
+	@include clearfix;
+    @include pie-clearfix;
+}
+
+
+/*
+ * Layout Overlay
+ *
+ * Usage:
+ * @include overlay( $index );
+ * @include overlay-level( $index );
+ */
+@mixin overlay ( $index : 1 ) {
+	z-index: $index;
+}
+
+@mixin overlay-level ( $index : 1 ) {
+	@include z-index( $index );
+}
+
+/*
+ * Layout Position
+ *
+ * Usage:
+ * @include position( $position, $arguments );
+ * @include position-set( $arguments );
+ * @include position-absolute( $arguments );
+ * @include position-fixed( $arguments );
+ * @include position-relative( $arguments );
+ * @include position-static( $arguments );
+ * @include position-inherit( $arguments );
+ */
+@mixin position ( $position : relative, $arguments : false ) {
+	position: $position;
+	@include position-set( $arguments );
+}
+
+@mixin position-arguments( $arguments : false ) {
+	@if $arguments != false {
+		$offsets: top right bottom left margin-top margin-right margin-bottom margin-left;
+
+		@each $o in $offsets {
+			$i: index( $arguments, $o );
+
+			@if $i
+			and $i + 1 <= length( $arguments )
+			and type-of( nth( $arguments, $i + 1 ) ) == number {
+				#{$o}: nth( $arguments, $i + 1 );
+			}
+		}
+	}
+}
+
+@mixin position-set ( $arguments : false ) {
+	@include position-arguments( $arguments );
+}
+
+@mixin position-absolute ( $arguments : false ) {
+	@include position( absolute, $arguments );
+}
+
+@mixin position-fixed ( $arguments : false ) {
+	@include position( fixed, $arguments );
+}
+
+@mixin position-relative ( $arguments : false ) {
+	@include position( relative, $arguments );
+}
+
+@mixin position-static( $arguments : false ) {
+	@include position( static, $arguments );
+}
+
+@mixin position-inherit($arguments: false) {
+	@include position( inherit, $arguments );
+}
+
+@mixin generate-layouts ( $class-prefix : null ) {
+
+	.#{$class-prefix}push-no {
+		@include float-none( );
+	}
+
+	.#{$class-prefix}push-clear {
+		@include float-clear( );
+	}
+
+	.#{$class-prefix}push-left {
+		@include float-left( );
+	}
+
+	.#{$class-prefix}push-right {
+		@include float-right( );
+	}
+
+	.#{$class-prefix}push-center {
+		@include center( );
+	}
+
+}
+
+@mixin generate-flex-layouts ( $class-prefix : null ) {
+
+	.push-top,
+	.#{$class-prefix}push-top {
+		-webkit-box-align: start;
+        -webkit-align-items: flex-start;
+        -moz-box-align: start;
+        -ms-flex-align: start;
+        align-items: flex-start;
+        -webkit-align-self: flex-start;
+        -ms-flex-item-align: start;
+        align-self: flex-start;
+	}
+
+	.push-bottom,
+	.#{$class-prefix}push-bottom {
+		-webkit-box-align: end;
+        -webkit-align-items: flex-end;
+        -moz-box-align: end;
+        -ms-flex-align: end;
+        align-items: flex-end;
+        -webkit-align-self: flex-end;
+        -ms-flex-item-align: end;
+        align-self: flex-end;
+	}
+
+	.push-middle,
+	.#{$class-prefix}push-middle {
+		-webkit-box-align: center;
+        -webkit-align-items: center;
+        -moz-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-align-self: flex-center;
+        -ms-flex-item-align: center;
+        align-self: center;
+	}
+
+	.push-center,
+	.#{$class-prefix}push-center {
+		@include float( none !important );
+		@include experimental(justify-content, center, -moz, -webkit, not -o, -ms, not -khtml, official);
+        @include experimental(flex-pack, center, not -moz, not -webkit, not -o, -ms, not -khtml, not official);
+		@include center( );
+	}
+
+	.push-left,
+	.#{$class-prefix}push-left {
+		@include experimental(justify-content, flex-start, -moz, -webkit, not -o, -ms, not -khtml, official);
+        @include experimental(flex-pack, start, not -moz, not -webkit, not -o, -ms, not -khtml, not official);
+		@include float-left( );
+	}
+
+	.push-right,
+	.#{$class-prefix}push-right {
+		@include experimental( justify-content, flex-end, -moz, -webkit, not -o, -ms, not -khtml, official );
+        @include experimental( flex-pack, end, not -moz, not -webkit, not -o, -ms, not -khtml, not official );
+		@include float-right( );
+	}
+
+}

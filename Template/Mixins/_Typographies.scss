@@ -1,0 +1,162 @@
+/*
+ * Font and Spaces
+ *
+ * Usage:
+ * @include font-family( $font );
+ * @include font-size( $size );
+ * @include font-style( $style );
+ * @include font-weight( $weight );
+ * @include line-height( $line-height );
+ * @include letter-spacing( $letter-spacing );
+ */
+@mixin font-family ( $font : $default-font-family ) {
+	font-family: $font;
+}
+
+@mixin font-size ( $size : $default-font-size ) {
+	font-size: $size;
+}
+
+@mixin font-style ( $style : normal ) {
+	font-style: $style;
+}
+
+@mixin font-weight ( $weight : normal ) {
+	font-weight: $weight;
+}
+
+@mixin line-height ( $line-height : $default-line-height ) {
+	line-height: $line-height;
+}
+
+@mixin letter-spacing ( $letter-spacing : normal ) {
+	letter-spacing: $letter-spacing;
+}
+
+/*
+ * Text And Spaces
+ *
+ * Usage:
+ * @include text( $arguments );
+ * @include text-align( $align );
+ * @include text-color( $color );
+ * @include text-transform( $transform );
+ * @include text-decoration( $decoration );
+ * @include text-ellipsis( $width );
+ * @include text-font( $font );
+ * @include text-hide( );
+ * @include text-letter-spacing( $letter-spacing );
+ * @include text-line-height( $text-line-height );
+ * @include text-size( $size );
+ * @include text-squared( $size );
+ * @include text-style( $style );
+ * @include text-weight( $weight );
+ * @include text-vertical-align( $align );
+ */
+@mixin text ( $arguments : false ) {
+	@include text-arguments( $arguments );
+}
+
+@mixin text-align ( $align : $default-text-align ) {
+	text-align: $align;
+}
+
+@mixin text-color ( $color : $default-font-color ) {
+	color: $color;
+}
+
+@mixin text-decoration ( $decoration : $default-text-decoration ) {
+	text-decoration: $decoration;
+}
+
+@mixin text-transform ( $transform : $default-text-transform ) {
+	text-transform: $transform;
+}
+
+@mixin text-ellipsis ( $width : 100% ) {
+	display: inline-block;
+	max-width: $width;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+@mixin text-font ( $font : $default-font-family ) {
+	@include font-family( $font );
+}
+
+@mixin text-hide ( ) {
+	border:0;
+	font: 0/0 a;
+	text-shadow: none;
+	color: transparent;
+	background-color: transparent;
+}
+
+@mixin text-letter-spacing ( $letter-spacing : normal ) {
+	@include letter-spacing( $letter-spacing );
+}
+
+@mixin text-line-height ( $line-height : $default-line-height ) {
+	@include line-height( $line-height );
+}
+
+@mixin text-size ( $size : $default-font-size ) {
+	@include font-size( $size );
+}
+
+@mixin text-squared ( $size ) {
+	width: $size;
+	height: $size;
+	line-height: $size;
+	text-align: center;
+}
+
+@mixin text-style ( $style : normal ) {
+	@include font-style( $style );
+}
+
+@mixin text-weight ( $weight : normal ) {
+	@include font-weight( $weight );
+}
+
+@mixin text-vertical-align ( $align : base ) {
+	@include vertical-align( $align );
+}
+
+@mixin text-vertical-align-top ( ) {
+	@include vertical-align( top );
+}
+
+@mixin text-vertical-align-middle ( ) {
+	@include vertical-align( middle );
+}
+
+@mixin text-vertical-align-base ( ) {
+	@include vertical-align( base );
+}
+
+@mixin text-vertical-spacing ( $font-size ) {
+	margin-top: 0;
+	margin-bottom: ((( $default-font-size / $font-size ) * $vertical-rhythm-unit ) / 100 ) * 1em;
+}
+
+@mixin generate-text-aligns ( $class-prefix : null ) {
+
+	.#{$class-prefix}align-left {
+		@include text-align( 'left' );
+	}
+
+	.#{$class-prefix}align-center {
+		@include text-align( 'center' );
+	}
+
+	.#{$class-prefix}align-right {
+		@include text-align( 'right' );
+	}
+
+	.#{$class-prefix}align-justify {
+		@include text-align( 'justify' );
+	}
+
+}

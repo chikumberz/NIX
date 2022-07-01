@@ -1,0 +1,13 @@
+/*
+ * Animation
+ *
+ * Usage:
+ * @include animate( $attribute, $transition-speed, $easing );
+ */
+@mixin animate ( $attribute, $transition-speed : $default-animation-speed, $easing : $default-animation-easing ) {
+	-webkit-transition: $attribute $transition-speed $easing;
+	-moz-transition: $attribute $transition-speed $easing;
+	-o-transition: $attribute $transition-speed $easing;
+	-ms-transition: $attribute $transition-speed $easing;
+	transition: $attribute $transition-speed $easing;
+}

@@ -1,0 +1,65 @@
+/*
+ * Grid Class Names
+ */
+$grid-class-name                			: '#{$class-name-prefix}-row' !default;
+$grid-flex-class-name           			: '#{$class-name-prefix}-row-flex' !default;
+
+$grid-column-group-class-name   			: 'column-group' !default;
+
+$grid-gutters-prefix-no						: 'no' !default;
+$grid-gutters-prefix-half					: 'half' !default;
+$grid-gutters-prefix-quarter				: 'quarter' !default;
+$grid-gutters-prefix-double					: 'double' !default;
+$grid-gutters-prefix-horizontal 			: 'horizontal' !default;
+$grid-gutters-prefix-vertical				: 'vertical' !default;
+$grid-gutters-class-name        			: 'gutters' !default;
+$grid-flex-order-class-name 				: '#{$grid-flex-class-name}-order' !default;
+
+$grid-half-gutters-class-name   			: #{$grid-gutters-prefix-half}-#{$grid-gutters-class-name} !default;
+$grid-quarter-gutters-class-name			: #{$grid-gutters-prefix-quarter}-#{$grid-gutters-class-name} !default;
+$grid-double-gutters-class-name 			: #{$grid-gutters-prefix-double}-#{$grid-gutters-class-name} !default;
+$grid-no-gutters-class-name     			: #{$grid-gutters-prefix-no}-#{$grid-gutters-class-name} !default;
+
+$grid-horizontal-gutters-class-name        	: #{$grid-gutters-prefix-horizontal}-#{$grid-gutters-class-name} !default;
+$grid-half-horizontal-gutters-class-name   	: #{$grid-gutters-prefix-half}-#{$grid-gutters-prefix-horizontal}-#{$grid-gutters-class-name} !default;
+$grid-quarter-horizontal-gutters-class-name	: #{$grid-gutters-prefix-quarter}-#{$grid-gutters-prefix-horizontal}-#{$grid-gutters-class-name} !default;
+$grid-double-horizontal-gutters-class-name 	: #{$grid-gutters-prefix-double}-#{$grid-gutters-prefix-horizontal}-#{$grid-gutters-class-name} !default;
+
+$grid-vertical-gutters-class-name        	: #{$grid-gutters-prefix-vertical}-#{$grid-gutters-class-name} !default;
+$grid-half-vertical-gutters-class-name   	: #{$grid-gutters-prefix-half}-#{$grid-gutters-prefix-vertical}-#{$grid-gutters-class-name} !default;
+$grid-quarter-vertical-gutters-class-name	: #{$grid-gutters-prefix-quarter}-#{$grid-gutters-prefix-vertical}-#{$grid-gutters-class-name} !default;
+$grid-double-vertical-gutters-class-name 	: #{$grid-gutters-prefix-double}-#{$grid-gutters-prefix-vertical}-#{$grid-gutters-class-name} !default;
+
+/**
+ * Sets the grids maximum width
+ * @var $grid-max-width ( pixels|ems|percentage )
+ */
+$default-grid-row-max-width		: 1440px !default;
+$default-grid-column-step-size 	: 5;
+
+/*!
+ * Sets the grids breakpoint
+ *
+ * To add a new break point you'll need to add an element to the list.
+ *
+ * Here's an example: ( class-name-prefix, minimum-width, maximum-width, gutter-width, no-media-query).
+ *
+ * media: media type.
+ * class-name-prefix: this is the prefix used in tons of inks classes i.e.: large-100, small-40, etc.
+ * minimum-width: ( pixels|null ) the minimum width for the breakpoint
+ * maximum-width: ( pixels|null ) the maximum width for the breakpoint
+ * gutter-width: ( ems ) the width for the gutters (space between grid columns) for the breakpoint
+ * no-media-query: (true|false) if you need to support IE8 set this to true on a single breakpoint.
+ *                 Since IE8 does not support the @media statement leaving one of the breakpoints
+ *                 outside a @media query let's you use the grid in IE8.
+ *
+ */
+$default-grid-breakpoint 	: 'all';
+$default-grid-breakpoints	: (
+    ( 'screen', 'all', false, false, 1em, 1em, false ),
+    ( 'screen', 'xlarge', 1261px, false, 2em, 1.08em, false ),
+    ( 'screen', 'large', 961px, 1260px, 1.75em, 1.05em, false ),
+    ( 'screen', 'medium', 641px, 960px, 1.5em, 1em, false ),
+    ( 'screen', 'small', 321px, 640px, 1.25em, .98em, false ),
+    ( 'screen', 'tiny', false, 320px, 1em, .97em, false )
+);

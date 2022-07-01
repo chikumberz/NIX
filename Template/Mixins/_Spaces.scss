@@ -1,0 +1,198 @@
+/*
+ * Margin
+ *
+ * Usage:
+ * @inlclude margin( $spacing );
+ * @inlclude margin-top( $spacing );
+ * @inlclude margin-bottom( $spacing );
+ * @inlclude margin-left( $spacing );
+ * @inlclude margin-right( $spacing );
+ * @inlclude margin-vertical( $spacing );
+ * @inlclude margin-horizontal( $spacing );
+ */
+@mixin margin ( $spacing ) {
+	margin: $spacing;
+}
+
+@mixin margin-top ( $spacing : $default-space ) {
+	margin-top: $spacing;
+}
+
+@mixin margin-bottom ( $spacing : $default-space ) {
+	margin-bottom: $spacing;
+}
+
+@mixin margin-left ( $spacing : $default-space ) {
+	margin-left: $spacing;
+}
+
+@mixin margin-right ( $spacing : $default-space ) {
+	margin-right: $spacing;
+}
+
+@mixin margin-vertical ( $spacing : $default-space ) {
+	@include margin-top( $spacing );
+	@include margin-bottom( $spacing );
+}
+
+@mixin margin-horizontal ( $spacing : $default-space ) {
+	@include margin-left( $spacing );
+	@include margin-right( $spacing );
+}
+
+@mixin margin-no (  ) {
+	margin: 0;
+}
+
+/*
+ * Padding
+ *
+ * Usage:
+ * @inlclude padding( $spacing );
+ * @inlclude padding-top( $spacing );
+ * @inlclude padding-bottom( $spacing );
+ * @inlclude padding-left( $spacing );
+ * @inlclude padding-right( $spacing );
+ * @inlclude padding-vertical( $spacing );
+ * @inlclude padding-horizontal( $spacing );
+ */
+@mixin padding ( $spacing ) {
+	padding: $spacing;
+}
+
+@mixin padding-top ( $spacing : $default-space ) {
+	padding-top: $spacing;
+}
+
+@mixin padding-bottom ( $spacing : $default-space ) {
+	padding-bottom: $spacing;
+}
+
+@mixin padding-left ( $spacing : $default-space ) {
+	padding-left: $spacing;
+}
+
+@mixin padding-right ( $spacing : $default-space ) {
+	padding-right: $spacing;
+}
+
+@mixin padding-vertical ( $spacing : $default-space ) {
+	@include padding-top( $spacing );
+	@include padding-bottom( $spacing );
+}
+
+@mixin padding-horizontal ( $spacing : $default-space ) {
+	@include padding-left( $spacing );
+	@include padding-right( $spacing );
+}
+
+@mixin padding-no (  ) {
+	padding: 0;
+}
+
+@mixin generate-spaces ( $class-name-prefix : null, $gutter-width : $default-space, $positions : $default-positions, $spaces : $default-spaces ) {
+
+	@each $position in $positions {
+
+		@if $position == 'horizontal' {
+
+			.#{$class-name-prefix}#{$position}-space {
+				@include margin-horizontal( $gutter-width );
+			}
+
+			.#{$class-name-prefix}#{$position}-padding {
+				@include padding-horizontal( $gutter-width );
+			}
+
+			@each $space in $spaces {
+				$space-class-name: nth( $space, 1 );
+				$space-unit: nth( $space, 2 );
+
+				.#{$class-name-prefix}#{$space-class-name}-#{$position}-space {
+					@include margin-horizontal( $gutter-width * $space-unit );
+				}
+
+				.#{$class-name-prefix}#{$space-class-name}-#{$position}-padding {
+					@include padding-horizontal( $gutter-width * $space-unit );
+				}
+			}
+
+		}
+
+		@else if $position == 'vertical' {
+
+			.#{$class-name-prefix}#{$position}-space {
+				@include margin-vertical( $gutter-width );
+			}
+
+			.#{$class-name-prefix}#{$position}-padding {
+				@include padding-vertical( $gutter-width );
+			}
+
+			@each $space in $spaces {
+				$space-class-name: nth( $space, 1 );
+				$space-unit: nth( $space, 2 );
+
+				.#{$class-name-prefix}#{$space-class-name}-#{$position}-space {
+					@include margin-vertical( $gutter-width * $space-unit );
+				}
+
+				.#{$class-name-prefix}#{$space-class-name}-#{$position}-padding {
+					@include padding-vertical( $gutter-width * $space-unit );
+				}
+			}
+
+		}
+
+		@else if $position == 'normal' {
+
+			.#{$class-name-prefix}space {
+				@include margin-vertical( $gutter-width );
+			}
+
+			.#{$class-name-prefix}padding {
+				@include padding-vertical( $gutter-width );
+			}
+
+			@each $space in $spaces {
+				$space-class-name: nth( $space, 1 );
+				$space-unit: nth( $space, 2 );
+
+				.#{$class-name-prefix}#{$space-class-name}-space {
+					@include margin-vertical( $gutter-width * $space-unit );
+				}
+
+				.#{$class-name-prefix}#{$space-class-name}-padding {
+					@include padding-vertical( $gutter-width * $space-unit );
+				}
+			}
+
+		}
+
+		@else if $position != 'horizontal' and $position != 'vertical' and $position != null {
+
+			.#{$class-name-prefix}#{$position}-space {
+				margin-#{$position}: $gutter-width;
+			}
+
+			.#{$class-name-prefix}#{$position}-padding {
+				padding-#{$position}: $gutter-width;
+			}
+
+			@each $space in $spaces {
+				$space-class-name: nth( $space, 1 );
+				$space-unit: nth( $space, 2 );
+
+				.#{$class-name-prefix}#{$space-class-name}-#{$position}-space {
+					margin-#{$position}: $gutter-width * $space-unit;
+				}
+
+				.#{$class-name-prefix}#{$space-class-name}-#{$position}-padding {
+					padding-#{$position}: $gutter-width * $space-unit;
+				}
+			}
+		}
+
+	}
+}
+

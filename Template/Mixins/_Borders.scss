@@ -1,0 +1,246 @@
+/*
+ * Border Lines
+ *
+ * Usage:
+ * @include border( $color, $size, $type );
+ * @include border-top( $color, $size, $type );
+ * @include border-bottom( $color, $size, $type );
+ * @include border-left( $color, $size, $type );
+ * @include border-right( $color, $size, $type );
+ * @include border-vertical( $color, $size, $type );
+ * @include border-horizontal( $color, $size, $type );
+ */
+@mixin border ( $color : $default-border-color, $size : $default-border-size, $type : $default-border-type ) {
+	border: $size $type $color;
+}
+
+@mixin border-top ( $color : $default-border-color, $size : $default-border-size, $type : $default-border-type ) {
+	border-top: $size $type $color;
+}
+
+@mixin border-bottom ( $color : $default-border-color, $size : $default-border-size, $type : $default-border-type ) {
+	border-bottom: $size $type $color;
+}
+
+@mixin border-left ( $color : $default-border-color, $size : $default-border-size, $type : $default-border-type ) {
+	border-left: $size $type $color;
+}
+
+@mixin border-right ( $color : $default-border-color, $size : $default-border-size, $type : $default-border-type ) {
+	border-right: $size $type $color;
+}
+
+@mixin border-vertical ( $color : $default-border-color, $size : $default-border-size, $type : $default-border-type ) {
+	@include border-top( $color, $size, $type );
+	@include border-bottom( $color, $size, $type );
+}
+
+@mixin border-horizontal ( $color : $default-border-color, $size : $default-border-size, $type : $default-border-type ) {
+	@include border-left( $color, $size, $type );
+	@include border-right( $color, $size, $type );
+}
+
+/*
+ * No Border Lines
+ *
+ * Usage:
+ * @include border-no( $position );
+ * @include border-no-top( );
+ * @include border-no-bottom( );
+ * @include border-no-left( );
+ * @include border-no-right( );
+ * @include border-no-vertical( );
+ * @include border-no-horizontal( );
+ */
+@mixin border-no ( $position : false ) {
+	@if $position == false {
+		border: none;
+	}
+	@else {
+		border-#{$position}: none;
+	}
+}
+
+@mixin border-no-top ( ) {
+	@include border-no( 'top' );
+}
+
+@mixin border-no-left ( ) {
+	@include border-no( 'left' );
+}
+
+@mixin border-no-right ( ) {
+	@include border-no( 'right' );
+}
+
+@mixin border-no-botom ( ) {
+	@include border-no( 'bottom' );
+}
+
+@mixin border-no-vertical ( ) {
+	@include border-no( 'top' );
+	@include border-no( 'bottom' );
+}
+
+@mixin border-no-horizontal ( ) {
+	@include border-no( 'left' );
+	@include border-no( 'right' );
+}
+
+/*
+ * Border Radius
+ *
+ * Usage:
+ * @include border-radius( $radius );
+ * @include border-radius-top( $radius );
+ * @include border-radius-bottom( $radius );
+ * @include border-radius-left( $radius );
+ * @include border-radius-right( $radius );
+ * @include border-radius-vertical( $radius );
+ * @include border-radius-horizontal( $radius );
+ * @include border-radius-no( );
+ */
+@mixin border-radius ( $radius : $default-border-radius ) {
+	border-radius: $radius;
+	-o-border-radius: $radius;
+	-ms-border-radius: $radius;
+	-moz-border-radius: $radius;
+	-webkit-border-radius: $radius;
+	background-clip: padding-box;
+}
+
+@mixin border-radius-top ( $radius : $default-border-radius ) {
+	border-radius: $radius $radius 0px 0px;
+	-o-border-radius: $radius $radius 0px 0px;
+	-ms-border-radius: $radius $radius 0px 0px;
+	-moz-border-radius: $radius $radius 0px 0px;
+	-webkit-border-radius: $radius $radius 0px 0px;
+	background-clip: padding-box;
+}
+
+@mixin border-radius-bottom ( $radius : $default-border-radius ) {
+	border-radius: 0px 0px $radius $radius;
+	-o-border-radius: 0px 0px $radius $radius;
+	-ms-border-radius: 0px 0px $radius $radius;
+	-moz-border-radius: 0px 0px $radius $radius;
+	-webkit-border-radius: 0px 0px $radius $radius;
+	background-clip: padding-box;
+}
+
+@mixin border-radius-left ( $radius: $default-border-radius ) {
+	border-radius: $radius 0px 0px $radius;
+	-o-border-radius: $radius 0px 0px $radius;
+	-ms-border-radius: $radius 0px 0px $radius;
+	-moz-border-radius: $radius 0px 0px $radius;
+	-webkit-border-radius: $radius 0px 0px $radius;
+	background-clip: padding-box;
+}
+
+@mixin border-radius-right ( $radius: $default-border-radius ) {
+	border-radius: 0px $radius $radius 0px;
+	-o-border-radius: 0px $radius $radius 0px;
+	-ms-border-radius: 0px $radius $radius 0px;
+	-moz-border-radius: 0px $radius $radius 0px;
+	-webkit-border-radius: 0px $radius $radius 0px;
+	background-clip: padding-box;
+}
+
+@mixin border-radius-top-right ( $radius: $default-border-radius ) {
+	border-radius: 0px $radius 0px 0px;
+	-o-border-radius: 0px $radius 0px 0px;
+	-ms-border-radius: 0px $radius 0px 0px;
+	-moz-border-radius: 0px $radius 0px 0px;
+	-webkit-border-radius: 0px $radius 0px 0px;
+	background-clip: padding-box;
+}
+
+@mixin border-radius-top-left ( $radius: $default-border-radius ) {
+	border-radius: $radius 0px 0px 0px;
+	-o-border-radius: $radius 0px 0px 0px;
+	-ms-border-radius: $radius 0px 0px 0px;
+	-moz-border-radius: $radius 0px 0px 0px;
+	-webkit-border-radius: $radius 0px 0px 0px;
+	background-clip: padding-box;
+}
+
+@mixin border-radius-bottom-right ( $radius: $default-border-radius ) {
+	border-radius: 0px 0px $radius 0px;
+	-o-border-radius: 0px 0px $radius 0px;
+	-ms-border-radius: 0px 0px $radius 0px;
+	-moz-border-radius: 0px 0px $radius 0px;
+	-webkit-border-radius: 0px 0px $radius 0px;
+	background-clip: padding-box;
+}
+
+@mixin border-radius-bottom-left ( $radius: $default-border-radius ) {
+	border-radius: 0px 0px 0px $radius;
+	-o-border-radius: 0px 0px 0px $radius;
+	-ms-border-radius: 0px 0px 0px $radius;
+	-moz-border-radius: 0px 0px 0px $radius;
+	-webkit-border-radius: 0px 0px 0px $radius;
+	background-clip: padding-box;
+}
+
+@mixin border-radius-no ( ) {
+	border-radius: 0px;
+	-o-border-radius: 0px;
+	-ms-border-radius: 0px;
+	-moz-border-radius: 0px;
+	-webkit-border-radius: 0px;
+	background-clip: padding-box;
+}
+
+/*
+ * Border Lines Fade Out
+ *
+ * Usage:
+ * @include border-light( $highlight, $color  );
+ * @include border-light-top( $highlight, $color );
+ * @include border-light-bottom( $highlight, $color );
+ * @include border-light-left( $highlight, $color );
+ * @include border-light-right( $highlight, $color );
+ * @include border-dark-top( $highlight, $color );
+ * @include border-dark-bottom( $highlight, $color );
+ * @include border-dark-left( $highlight, $color );
+ * @include border-dark-right( $highlight, $color );
+ */
+
+@mixin border-light (  $highlight: $default-border-light, $color: $color-white ) {
+	border: $default-border-light-size $default-border-light-type fade-out ( $color, $highlight );
+}
+
+@mixin border-light-top ( $highlight : $default-border-light, $color : $color-white ) {
+	border-top: $default-border-light-size $default-border-light-type fade-out ( $color, $highlight );
+}
+
+@mixin border-light-bottom ( $highlight : $default-border-light, $color : $color-white ) {
+	border-bottom: $default-border-light-size $default-border-light-type fade-out ( $color, $highlight );
+}
+
+@mixin border-light-left ( $highlight : $default-border-light, $color : $color-white ) {
+	border-left: $default-border-light-size $default-border-light-type fade-out ( $color, $highlight );
+}
+
+@mixin border-light-right ( $highlight : $default-border-light, $color : $color-white ) {
+	border-right: $default-border-light-size $default-border-light-type fade-out ( $color, $highlight );
+}
+
+@mixin border-dark ( $lowlight : $default-border-light, $color : $color-black ) {
+	border: $default-border-light-size $default-border-light-type fade-out ( $color, $lowlight );
+}
+
+@mixin border-dark-top ( $lowlight : $default-border-light, $color : $color-black ) {
+	border-top: $default-border-light-size $default-border-light-type fade-out ( $color, $lowlight );
+}
+
+@mixin border-dark-bottom ( $lowlight : $default-border-light, $color : $color-black ) {
+	border-bottom: $default-border-light-size $default-border-light-type fade-out ( $color, $lowlight );
+}
+
+@mixin border-dark-left ( $lowlight : $default-border-light, $color : $color-black ) {
+	border-left: $default-border-light-size $default-border-light-type fade-out ( $color, $lowlight );
+}
+
+@mixin border-dark-right ( $lowlight : $default-border-light, $color : $color-black ) {
+	border-right: $default-border-light-size $default-border-light-type fade-out ( $color, $lowlight );
+}

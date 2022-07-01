@@ -1,0 +1,7 @@
+/*
+ * Generate Grid
+ *
+ * Usage:
+ * @include generate-gird( $breakpoints, $is_flex ); // Defalt $is_flex = false
+ */
+@include generate-grid( $default-grid-breakpoints, true );

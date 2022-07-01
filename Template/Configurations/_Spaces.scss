@@ -1,0 +1,18 @@
+/*
+ * Spaces Configurations
+ */
+$default-space 			: 1em;
+$default-positions		: (
+	'normal',
+	'vertical',
+	'horitontal',
+	'top',
+	'right',
+	'bottom',
+	'left'
+);
+$default-spaces			:  (
+	( 'double', 2 ),
+	( 'half', 0.5 ),
+	( 'quarter', 0.25 )
+);

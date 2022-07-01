@@ -1,0 +1,55 @@
+/*
+ * Sizes
+ *
+ * Usage:
+ * @include size( $width, $height );
+ * @include height( $height, $height-max, $height-min );
+ * @include height-max( $height );
+ * @include height-min( $height );
+ * @include width( $height );
+ * @include width-max( $width );
+ * @include width-min( $width );
+ */
+
+@mixin size( $width : $default-size-width, $height : $default-size-height ) {
+	@include width( $width );
+	@include height( $height );
+}
+
+@mixin height ( $height : $default-size-height, $height-max : $default-size-height-min, $height-min : $default-size-height-min) {
+	height: $height;
+
+	@if $height-max != false {
+		@include height-max( $height-max);
+	}
+	@if $height-min != false {
+		@include height-min( $height-min );
+	}
+}
+
+@mixin height-max ( $height : $default-size-height-max ) {
+	max-height: $height;
+}
+
+@mixin height-min ( $height : $default-size-height-min ) {
+	min-height: $height;
+}
+
+@mixin width ( $width : $default-size-width, $width-max : $default-size-width-min, $width-min : $default-size-width-min ) {
+	width: $width;
+
+	@if $width-max != false {
+		@include width-max( $width-max );
+	}
+	@if $width-min != false {
+		@include width-min( $width-min );
+	}
+}
+
+@mixin width-max ( $width : $default-size-width-max ) {
+	max-width: $width;
+}
+
+@mixin width-min ( $width: $default-size-width-min ) {
+	min-width: $width;
+}

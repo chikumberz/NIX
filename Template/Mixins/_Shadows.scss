@@ -1,0 +1,33 @@
+/*
+ * Shadow
+ *
+ * Usage:
+ * @include drop-shadow( $color, $size, $vertical-offset, $horizontal-offset );
+ * @include drop-shadow-inset( $color, $size, $vertical-offset, $horizontal-offset );
+ * @include drop-shadow-no( );
+ * @include no-drop-shadow( );
+ */
+
+@mixin drop-shadow ( $color : $default-shadow-color, $size : $default-shadow-size, $vertical-offset : $default-shadow-vertical-offset, $horizontal-offset : $default-shadow-horizontal-offset ) {
+	box-shadow: $horizontal-offset $vertical-offset $size $color;
+	-webkit-box-shadow: $horizontal-offset $vertical-offset $size $color;
+	-moz-box-shadow: $horizontal-offset $vertical-offset $size $color;
+}
+
+@mixin drop-shadow-inset ( $color : $default-shadow-color, $size : $default-shadow-size, $vertical-offset : $default-shadow-vertical-offset, $horizontal-offset : $default-shadow-horizontal-offset ) {
+	box-shadow: inset $horizontal-offset $vertical-offset $size $color;
+	-webkit-box-shadow: inset $horizontal-offset $vertical-offset $size $color;
+	-moz-box-shadow: inset $horizontal-offset $vertical-offset $size $color;
+}
+
+@mixin drop-shadow-no ( ) {
+	box-shadow: none;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+}
+
+@mixin no-drop-shadow ( ) {
+	box-shadow: none;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+}
